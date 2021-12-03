@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public typealias SpriteNode = Node<SKSpriteNode>
+public typealias SpriteNode = Builder<SKSpriteNode>
 public extension SpriteNode {
     @discardableResult func texture(_ texture: SKTexture?) -> Self {
         self.body.texture = texture

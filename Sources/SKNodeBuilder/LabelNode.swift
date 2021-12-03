@@ -6,7 +6,7 @@
 //
 
 import SpriteKit
-public typealias LabelNode = Node<SKLabelNode>
+public typealias LabelNode = Builder<SKLabelNode>
 public extension LabelNode {
     @discardableResult func text(_ text: String?) -> Self {
         self.body.text = text
