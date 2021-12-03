@@ -7,6 +7,9 @@
 
 import SpriteKit
 public typealias LabelBuilder = Builder<SKLabelNode>
+/// 後方互換性のサポート.
+/// - attention: v2 以降から非推奨となります.
+public typealias LabelNode = LabelBuilder
 public extension LabelBuilder {
     @discardableResult func text(_ text: String?) -> Self {
         self.body.text = text

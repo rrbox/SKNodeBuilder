@@ -47,7 +47,9 @@ final public class Builder<Body: SKNode>: NSObject {
         return self
     }
 }
-
+/// 後方互換性のサポート.
+/// - attention: v2 以降から非推奨となります.
+public typealias Node = Builder
 public extension SKNode {
     func addChild<Body: SKNode>(_ node: Builder<Body>) {
         self.addChild(node.body)

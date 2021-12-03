@@ -8,6 +8,9 @@
 import SpriteKit
 
 public typealias SpriteBuilder = Builder<SKSpriteNode>
+/// 後方互換性のサポート.
+/// - attention: v2 以降から非推奨となります.
+public typealias SpriteNode = SpriteBuilder
 public extension SpriteBuilder {
     @discardableResult func texture(_ texture: SKTexture?) -> Self {
         self.body.texture = texture
