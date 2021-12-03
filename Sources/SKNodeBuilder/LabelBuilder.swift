@@ -6,8 +6,11 @@
 //
 
 import SpriteKit
-public typealias LabelNode = Node<SKLabelNode>
-public extension LabelNode {
+public typealias LabelBuilder = Builder<SKLabelNode>
+/// 後方互換をサポートするための型参照です.
+/// - attention: v2 以降から非推奨となります.
+public typealias LabelNode = LabelBuilder
+public extension LabelBuilder {
     @discardableResult func text(_ text: String?) -> Self {
         self.body.text = text
         return self
