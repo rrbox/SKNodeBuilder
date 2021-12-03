@@ -6,12 +6,12 @@
 //
 
 import SpriteKit
-public struct Builder<Body: SKNode> {
+final public class Node<Body: SKNode>: NSObject {
     let body: Body
     public init(_ body: Body) {
         self.body = body
     }
-    public init() {
+    public override init() {
         self.body = Body()
     }
     @discardableResult public func position(_ position: CGPoint) -> Self {
@@ -47,16 +47,14 @@ public struct Builder<Body: SKNode> {
         return self
     }
 }
-/// 後方互換をサポートするための方参照です.
-/// - attention: v2 以降から非推奨となります.
-public typealias Node = Builder
+
 public extension SKNode {
-    func addChild<Body: SKNode>(_ node: Builder<Body>) {
+    func addChild<Body: SKNode>(_ node: Node<Body>) {
         self.addChild(node.body)
     }
 }
-public extension Builder {
-    @discardableResult func addChild<Body: SKNode>(_ node: Builder<Body>) -> Self {
+public extension Node {
+    @discardableResult func addChild<Body: SKNode>(_ node: Node<Body>) -> Self {
         self.body.addChild(node)
         return self
     }

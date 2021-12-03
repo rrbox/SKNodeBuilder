@@ -12,7 +12,7 @@ public struct NodeBuilder<Body: SKNode> {
     public init(wrappedValue: Body) {
         self.wrappedValue = wrappedValue
     }
-    public var projectedValue: Builder<Body> {
-        Builder(self.wrappedValue)
+    public var projectedValue: Node<Body> {
+        Node(self.wrappedValue)
     }
 }
