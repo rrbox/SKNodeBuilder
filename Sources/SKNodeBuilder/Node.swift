@@ -6,12 +6,12 @@
 //
 
 import SpriteKit
-public struct Node<Body: SKNode> {
+final public class Node<Body: SKNode>: NSObject {
     let body: Body
     public init(_ body: Body) {
         self.body = body
     }
-    public init() {
+    public override init() {
         self.body = Body()
     }
     @discardableResult public func position(_ position: CGPoint) -> Self {
