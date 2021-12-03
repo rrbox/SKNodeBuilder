@@ -7,8 +7,8 @@
 
 import SpriteKit
 
-public typealias SpriteNode = Builder<SKSpriteNode>
-public extension SpriteNode {
+public typealias SpriteBuilder = Builder<SKSpriteNode>
+public extension SpriteBuilder {
     @discardableResult func texture(_ texture: SKTexture?) -> Self {
         self.body.texture = texture
         return self
