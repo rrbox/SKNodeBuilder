@@ -4,7 +4,7 @@
 
 ## Node
 
-SKNode を `Node` オブジェクトでラップして使用します。
+SKNode を `Builder` オブジェクトでラップして使用します。
 ``` Swift
 var node = Builder(SKNode())
     .position(CGPoint(x: 32, y: 100)) // 座標を設定
