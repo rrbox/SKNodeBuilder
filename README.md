@@ -6,7 +6,7 @@
 
 SKNode を `Node` オブジェクトでラップして使用します。
 ``` Swift
-var node = Node(SKNode())
+var node = Builder(SKNode())
     .position(CGPoint(x: 32, y: 100)) // 座標を設定
     .addChild(
         // 子ノードを追加
@@ -14,7 +14,7 @@ var node = Node(SKNode())
             .position(CGPoint(x: 0, y: 32)) // 子ノードの座標を設定
     )
     .addChild(
-        Node(SKLabelNode(text: "Rect"))
+        Builer(SKLabelNode(text: "Rect"))
             .position(x: -32, y: -32)
     )
 ```
@@ -25,7 +25,7 @@ var node = Node(SKNode())
 ``` Swift
 @NodeBuilder var node = SKNode()
 func anyMethod() {
-    // プロパティに $ をつけることで Node ラッパにアクセスします
+    // プロパティに $ をつけることで Builer ラッパにアクセスします
     self.$node
         .addChild(Node(SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)))
         .addChild(
