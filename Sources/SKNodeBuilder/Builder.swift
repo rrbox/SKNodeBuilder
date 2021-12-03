@@ -6,7 +6,7 @@
 //
 
 import SpriteKit
-public struct Node<Body: SKNode> {
+public struct Builder<Body: SKNode> {
     let body: Body
     public init(_ body: Body) {
         self.body = body
@@ -47,14 +47,16 @@ public struct Node<Body: SKNode> {
         return self
     }
 }
-
+/// 後方互換をサポートするための方参照です.
+/// - attention: v2 以降から非推奨となります.
+public typealias Node = Builder
 public extension SKNode {
-    func addChild<Body: SKNode>(_ node: Node<Body>) {
+    func addChild<Body: SKNode>(_ node: Builder<Body>) {
         self.addChild(node.body)
     }
 }
-public extension Node {
-    @discardableResult func addChild<Body: SKNode>(_ node: Node<Body>) -> Self {
+public extension Builder {
+    @discardableResult func addChild<Body: SKNode>(_ node: Builder<Body>) -> Self {
         self.body.addChild(node)
         return self
     }
