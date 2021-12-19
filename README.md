@@ -10,7 +10,7 @@ var builder = Builder(SKNode())
     .position(CGPoint(x: 32, y: 100)) // 座標を設定
     .addChild(
         // 子ノードを追加
-        Node(SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)
+        Builder(SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)
             .position(CGPoint(x: 0, y: 32)) // 子ノードの座標を設定
     )
     .addChild(
