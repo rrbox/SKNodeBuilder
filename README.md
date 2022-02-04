@@ -4,19 +4,22 @@
 
 ## Builder
 
-SKNode を `Builder` オブジェクトでラップして使用します。
+`Builder` オブジェクトをインスタンス化すると, イニシャライザに応じて内部に SKNode インスタンスが作成されます.
 ``` Swift
-var builder = Builder(SKNode())
+Builder<SKNode>()
     .position(CGPoint(x: 32, y: 100)) // 座標を設定
-    .addChild(
+    .add(
         // 子ノードを追加
-        Builder(SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)
-            .position(CGPoint(x: 0, y: 32)) // 子ノードの座標を設定
+        child: SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32),
+        build: { builder in
+            builder
+                .position(CGPoint(x: 0, y: 32)) // 子ノードの座標を設定
+        }
     )
-    .addChild(
-        Builer(SKLabelNode(text: "Rect"))
+    .add(child: SKLabelNode(text: "Rect"), build = { builder in
+        builder
             .position(x: -32, y: -32)
-    )
+    })
 ```
 
 ## NodeBuilder
@@ -27,10 +30,10 @@ var builder = Builder(SKNode())
 func anyMethod() {
     // プロパティに $ をつけることで Builer ラッパのインスタンスにアクセスできます
     self.$node
-        .addChild(Node(SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)))
-        .addChild(
-            SKLabelNode(text: "Rect")
-                .position(x: -32, y: -32)
-        )
+        .add(child: SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)))
+        .add(child: SKLabelNode(text: "Rect"), build = { builder in
+        builder
+            .position(x: -32, y: -32)
+    })
 }
 ```
