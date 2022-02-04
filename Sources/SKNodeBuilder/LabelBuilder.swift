@@ -6,57 +6,90 @@
 //
 
 import SpriteKit
+
 public typealias LabelBuilder = Builder<SKLabelNode>
-/// 後方互換性のサポート.
-/// - attention: v2 以降から非推奨となります.
-public typealias LabelNode = LabelBuilder
+
 public extension LabelBuilder {
-    @discardableResult func text(_ text: String?) -> Self {
-        self.body.text = text
+    
+    convenience init(fontNamed fontName: String?) {
+        self.init(.init(fontNamed: fontName))
+    }
+    
+    convenience init(text: String?) {
+        self.init(.init(text: text))
+    }
+    
+    convenience init(attributedText: NSAttributedString?) {
+        self.init(.init(attributedText: attributedText))
+    }
+    
+}
+
+public extension BuilderProtocol where Body == SKLabelNode {
+    
+    @discardableResult func text(_ value: String?) -> Self {
+        self.node.text = value
         return self
     }
-    @discardableResult func attributedText(_ attributedText: NSAttributedString) -> Self {
-        self.body.attributedText = attributedText
+    
+    @discardableResult func attributedText(_ value: NSAttributedString) -> Self {
+        self.node.attributedText = value
         return self
     }
-    @discardableResult func fontColor(_ fontColor: SKColor?) -> Self {
-        self.body.fontColor = fontColor
+    
+    @discardableResult func fontColor(_ value: SKColor?) -> Self {
+        self.node.fontColor = value
         return self
     }
-    @discardableResult func colorBlendFactor(_ colorBlendFactor: CGFloat) -> Self {
-        self.body.colorBlendFactor = colorBlendFactor
+    
+    @discardableResult func fontName(_ value: String?) -> Self {
+        self.node.fontName = value
         return self
     }
-    @discardableResult func blendMode(_ blendMode: SKBlendMode) -> Self {
-        self.body.blendMode = blendMode
+    
+    @discardableResult func fontSize(_ value: CGFloat) -> Self {
+        self.node.fontSize = value
         return self
     }
-    @discardableResult func preferredMaxLayoutWidth(_ preferredMaxLayoutWidth: CGFloat) -> Self {
-        self.body.preferredMaxLayoutWidth = preferredMaxLayoutWidth
+    
+    @discardableResult func vertivalAlignment(_ value: SKLabelVerticalAlignmentMode) -> Self {
+        self.node.verticalAlignmentMode = value
         return self
     }
-    @discardableResult func lineBreakMode(_ lineBreakMode: NSLineBreakMode) -> Self {
-        self.body.lineBreakMode = lineBreakMode
+    
+    @discardableResult func horizontalAlignment(_ value: SKLabelHorizontalAlignmentMode) -> Self {
+        self.node.horizontalAlignmentMode = value
         return self
     }
-    @discardableResult func numberOfLines(_ numberOfLines: Int) -> Self {
-        self.body.numberOfLines = numberOfLines
+    
+    @discardableResult func preferredMaxLayoutWidth(_ value: CGFloat) -> Self {
+        self.node.preferredMaxLayoutWidth = value
         return self
     }
-    @discardableResult func fontName(_ fontName: String?) -> Self {
-        self.body.fontName = fontName
+    
+    @discardableResult func lineBreakMode(_ value: NSLineBreakMode) -> Self {
+        self.node.lineBreakMode = value
         return self
     }
-    @discardableResult func fontSize(_ size: CGFloat) -> Self {
-        self.body.fontSize = size
+    
+    @discardableResult func numberOfLines(_ value: Int) -> Self {
+        self.node.numberOfLines = value
         return self
     }
-    @discardableResult func vertivalAlignment(_ align: SKLabelVerticalAlignmentMode) -> Self {
-        self.body.verticalAlignmentMode = align
+    
+    @discardableResult func color(_ value: SKColor) -> Self {
+        self.node.color = value
         return self
     }
-    @discardableResult func horizontalAlignment(_ align: SKLabelHorizontalAlignmentMode) -> Self {
-        self.body.horizontalAlignmentMode = align
+    
+    @discardableResult func colorBlendFactor(_ value: CGFloat) -> Self {
+        self.node.colorBlendFactor = value
         return self
     }
+    
+    @discardableResult func blendMode(_ value: SKBlendMode) -> Self {
+        self.node.blendMode = value
+        return self
+    }
+
 }
