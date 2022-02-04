@@ -6,58 +6,63 @@
 //
 
 import SpriteKit
-final public class Builder<Body: SKNode>: NSObject {
-    let body: Body
-    public init(_ body: Body) {
+
+final public class Builder<Body: SKNode>: NSObject, BuilderProtocol {
+    
+    public var node: Body {
+        self.body
+    }
+    
+    private let body: Body
+    
+    init(_ body: Body) {
         self.body = body
     }
+    
     public override init() {
         self.body = Body()
     }
-    @discardableResult public func position(_ position: CGPoint) -> Self {
-        self.body.position = position
-        return self
+    
+    public init?(fileNamed filename: String) {
+        if let body = Body(fileNamed: filename) {
+            self.body = body
+        } else {
+            return nil
+        }
     }
-    @discardableResult public func alpha(_ alpha: CGFloat) -> Self {
-        self.body.alpha = alpha
-        return self
+    
+    public init(fileNamed filename: String, securelyWithClasses classes: Set<AnyHashable>) throws {
+        try self.body = Body(fileNamed: filename, securelyWithClasses: classes)
     }
-    @discardableResult public func zRotation(_ zRotation: CGFloat) -> Self {
-        self.body.zRotation = zRotation
-        return self
-    }
-    @discardableResult public func zPosition(_ zPosition: CGFloat) -> Self {
-        self.body.zPosition = zPosition
-        return self
-    }
-    @discardableResult public func xScale(_ s: CGFloat) -> Self {
-        self.body.xScale = s
-        return self
-    }
-    @discardableResult public func yScale(_ s: CGFloat) -> Self {
-        self.body.yScale = s
-        return self
-    }
-    @discardableResult public func name(_ name: String?) -> Self {
-        self.body.name = name
-        return self
-    }
-    @discardableResult public func physicsBody(_ physicsBody: SKPhysicsBody?) -> Self {
-        self.body.physicsBody = physicsBody
-        return self
-    }
+    
 }
-/// 後方互換性のサポート.
-/// - attention: v2 以降から非推奨となります.
-public typealias Node = Builder
-public extension SKNode {
-    func addChild<Body: SKNode>(_ node: Builder<Body>) {
-        self.addChild(node.body)
+
+final public class ChildNodeBuilder<Body: SKNode>: NSObject, BuilderProtocol {
+    
+    public var node: Body {
+        self.body
     }
+    
+    private unowned let body: Body
+    
+    internal init(_ body: Body) {
+        self.body = body
+    }
+    
 }
-public extension Builder {
-    @discardableResult func addChild<Body: SKNode>(_ node: Builder<Body>) -> Self {
-        self.body.addChild(node)
+
+public extension BuilderProtocol {
+    
+    @discardableResult func add<T: SKNode>(child node: T, build: (ChildNodeBuilder<T>) -> () = {_ in}) -> Self {
+        self.node.addChild(node)
+        build(ChildNodeBuilder<T>(node))
         return self
     }
+    
+    @discardableResult func insert<Node: SKNode>(child node: Node, at index: Int, build: (ChildNodeBuilder<Node>) -> () = {_ in}) -> Self {
+        self.node.insertChild(node, at: index)
+        build(ChildNodeBuilder<Node>(node))
+        return self
+    }
+    
 }
