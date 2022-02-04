@@ -16,7 +16,7 @@ Builder<SKNode>()
                 .position(CGPoint(x: 0, y: 32)) // 子ノードの座標を設定
         }
     )
-    .add(child: SKLabelNode(text: "Rect"), build = { builder in
+    .add(child: SKLabelNode(text: "Rect"), build: { builder in
         builder
             .position(x: -32, y: -32)
     })
@@ -31,7 +31,7 @@ func anyMethod() {
     // プロパティに $ をつけることで Builer ラッパのインスタンスにアクセスできます
     self.$node
         .add(child: SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)))
-        .add(child: SKLabelNode(text: "Rect"), build = { builder in
+        .add(child: SKLabelNode(text: "Rect"), build: { builder in
         builder
             .position(x: -32, y: -32)
     })
