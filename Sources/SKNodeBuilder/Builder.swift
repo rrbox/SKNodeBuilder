@@ -53,9 +53,9 @@ final public class ChildNodeBuilder<Body: SKNode>: NSObject, BuilderProtocol {
 
 public extension BuilderProtocol {
     
-    @discardableResult func add<T: SKNode>(child node: T, build: (ChildNodeBuilder<T>) -> () = {_ in}) -> Self {
+    @discardableResult func add<Node: SKNode>(child node: Node, build: (ChildNodeBuilder<Node>) -> () = {_ in}) -> Self {
         self.node.addChild(node)
-        build(ChildNodeBuilder<T>(node))
+        build(ChildNodeBuilder<Node>(node))
         return self
     }
     
