@@ -1,8 +1,10 @@
 # SKNodeBuilder
 
-2Dゲーム制作フレームワーク SpriteKit での SKNode の構築・設定を簡易化するライブラリです。
+2Dゲーム制作フレームワーク SpriteKit での SKNode の構築・設定を簡易化する SwiftPM です。
 
-## Builder
+## DEMO
+
+### Builder
 
 `Builder` オブジェクトをインスタンス化すると, イニシャライザに応じて内部に SKNode インスタンスが作成されます.
 ``` Swift
@@ -22,7 +24,7 @@ Builder<SKNode>()
     })
 ```
 
-## NodeBuilder
+### NodeBuilder
 
 `Builder` の機能をアトリビュートで実装できます。
 ``` Swift
