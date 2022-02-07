@@ -32,8 +32,8 @@ func anyMethod() {
     self.$node
         .add(child: SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)))
         .add(child: SKLabelNode(text: "Rect"), build: { builder in
-        builder
-            .position(x: -32, y: -32)
-    })
+            builder
+                .position(x: -32, y: -32)
+        })
 }
 ```
