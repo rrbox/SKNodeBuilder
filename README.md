@@ -39,3 +39,7 @@ func anyMethod() {
         })
 }
 ```
+## Builder で編集可能な SKNode 一覧
+- SKNode
+- SKSpriteNode
+- SKLabelNode
