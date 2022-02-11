@@ -37,7 +37,7 @@ final public class Builder<Body: SKNode>: NSObject, BuilderProtocol {
     
 }
 
-final public class ChildNodeBuilder<Body: SKNode>: NSObject, BuilderProtocol {
+final public class UnownedNodeBuilder<Body: SKNode>: NSObject, BuilderProtocol {
     
     public var node: Body {
         self.body
@@ -58,15 +58,15 @@ public extension BuilderProtocol {
         return self
     }
     
-    @discardableResult func add<Node: SKNode>(child node: Node, build: (ChildNodeBuilder<Node>) -> () = {_ in}) -> Self {
+    @discardableResult func add<Node: SKNode>(child node: Node, build: (UnownedNodeBuilder<Node>) -> () = {_ in}) -> Self {
         self.node.addChild(node)
-        build(ChildNodeBuilder<Node>(node))
+        build(UnownedNodeBuilder<Node>(node))
         return self
     }
     
-    @discardableResult func insert<Node: SKNode>(child node: Node, at index: Int, build: (ChildNodeBuilder<Node>) -> () = {_ in}) -> Self {
+    @discardableResult func insert<Node: SKNode>(child node: Node, at index: Int, build: (UnownedNodeBuilder<Node>) -> () = {_ in}) -> Self {
         self.node.insertChild(node, at: index)
-        build(ChildNodeBuilder<Node>(node))
+        build(UnownedNodeBuilder<Node>(node))
         return self
     }
     
