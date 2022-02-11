@@ -52,7 +52,7 @@ final public class UnownedNodeBuilder<Body: SKNode>: NSObject, BuilderProtocol {
 }
 
 /// 後方互換性のサポート.
-///- attention: v3.1.2 以降は非推奨となります.
+///- attention: v3.1.3 以降は非推奨となります.
 public typealias ChildNodeBuilder = UnownedNodeBuilder
 
 public extension BuilderProtocol {
