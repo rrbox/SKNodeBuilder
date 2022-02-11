@@ -8,20 +8,23 @@
 
 `Builder` オブジェクトをインスタンス化すると, イニシャライザに応じて内部に SKNode インスタンスが作成されます.
 ``` Swift
+let rect = SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)
 Builder<SKNode>()
     .position(CGPoint(x: 32, y: 100)) // 座標を設定
-    .add(
-        // 子ノードを追加
-        child: SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32),
+    .add(// 子ノードを追加(既に変数に保持されている場合)
+        child: rect,
         build: { builder in
             builder
                 .position(CGPoint(x: 0, y: 32)) // 子ノードの座標を設定
         }
     )
-    .add(child: SKLabelNode(text: "Rect"), build: { builder in
-        builder
+    .add(// 子ノードを追加
+        child: Builder<SKLabelNode>(text: "Rect")
+            .vertivalAlignment(.center)
+            .horizontalAlignment(.center)
+            .fontColor(.black)
             .position(x: -32, y: -32)
-    })
+    )
 ```
 
 ### NodeBuilder
