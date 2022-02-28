@@ -1,6 +1,6 @@
 # SKNodeBuilder
 
-2Dゲーム制作フレームワーク SpriteKit での SKNode の構築・設定を簡易化する SwiftPM です。
+2Dゲーム制作フレームワーク SpriteKit の SKNode を Builder パターンで設計できるようにする SwiftPM です。
 
 ## DEMO
 
