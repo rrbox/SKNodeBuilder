@@ -42,7 +42,7 @@ public struct Node<Body: SKNode> {
         self.body.name = name
         return self
     }
-    @discardableResult func physicsBody(_ physicsBody: SKPhysicsBody?) -> Self {
+    @discardableResult public func physicsBody(_ physicsBody: SKPhysicsBody?) -> Self {
         self.body.physicsBody = physicsBody
         return self
     }
