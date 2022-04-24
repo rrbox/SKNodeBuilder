@@ -25,5 +25,6 @@ final class SKNodeBuilderTests: XCTestCase {
             .node
         
         XCTAssertEqual(CGPoint(x: 32, y: 32), node.position)
-        XCTAssertEqual(node.children.count, 1)    }
+        XCTAssertEqual(node.children.count, 1)
+    }
 }
