@@ -46,3 +46,4 @@ func anyMethod() {
 - SKNode
 - SKSpriteNode
 - SKLabelNode
+- SKShapeNode
