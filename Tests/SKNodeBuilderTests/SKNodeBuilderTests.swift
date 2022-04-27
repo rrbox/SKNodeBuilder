@@ -3,28 +3,24 @@ import XCTest
 import SpriteKit
 
 final class SKNodeBuilderTests: XCTestCase {
-    func testExample() throws {
+    func testDefaultBuilder() throws {
         
-        let label = SKLabelNode(text: "test")
-        
-        let node = Builder()
-            .position(CGPoint(x: 32, y: 32))
-            .add(child: SKNode(), build: { builder in
-                builder
-                    .position(CGPoint(x: 32, y: 32))
-                    .add(child: label) { builder in
-                        builder
-                            .position(CGPoint(x: 32, y: 32))
-                    }
-                    .add(
-                        child: Builder<SKSpriteNode>(color: .white, size: CGSize(width: 32, height: 32))
-                            .position(CGPoint(x: 100, y: 100))
-                    )
-            })
-            .setScale(98)
+        let node = Builder<SKNode>()
+            .position(CGPoint(x: 1, y: 0))
+            .zPosition(1)
+            .zRotation(1)
+            .setScale(2)
+            .alpha(0.5)
+            .name("test_node")
             .node
         
-        XCTAssertEqual(CGPoint(x: 32, y: 32), node.position)
-        XCTAssertEqual(node.children.count, 1)
+        XCTAssertEqual(node.position, CGPoint(x: 1, y: 0))
+        XCTAssertEqual(node.zPosition, 1)
+        XCTAssertEqual(node.zRotation, 1)
+        XCTAssertEqual(node.xScale, 2)
+        XCTAssertEqual(node.yScale, 2)
+        XCTAssertEqual(node.alpha, 0.5)
+        XCTAssertEqual(node.name, "test_node")
+        
     }
 }
