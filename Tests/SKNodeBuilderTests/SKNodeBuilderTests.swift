@@ -50,6 +50,7 @@ final class SKNodeBuilderTests: XCTestCase {
     func testLabelBuilder() throws {
         
         let node = Builder<SKLabelNode>()
+            .text("Sample")
             .fontColor(.green)
             .fontName("Times")
             .fontSize(100)
@@ -60,6 +61,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .numberOfLines(95)
             .node
         
+        XCTAssertEqual(node.text, "Sample")
         XCTAssertEqual(node.fontColor, SKColor.green)
         XCTAssertEqual(node.fontName, "Times")
         XCTAssertEqual(node.fontSize, 100)
