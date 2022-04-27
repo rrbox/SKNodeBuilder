@@ -47,4 +47,27 @@ final class SKNodeBuilderTests: XCTestCase {
         
     }
     
+    func testLabelBuilder() throws {
+        
+        let node = Builder<SKLabelNode>()
+            .fontColor(.green)
+            .fontName("Times")
+            .fontSize(100)
+            .vertivalAlignment(.center)
+            .horizontalAlignment(.left)
+            .preferredMaxLayoutWidth(100)
+            .lineBreakMode(.byClipping)
+            .numberOfLines(95)
+            .node
+        
+        XCTAssertEqual(node.fontColor, SKColor.green)
+        XCTAssertEqual(node.fontName, "Times")
+        XCTAssertEqual(node.fontSize, 100)
+        XCTAssertEqual(node.verticalAlignmentMode, .center)
+        XCTAssertEqual(node.horizontalAlignmentMode, .left)
+        XCTAssertEqual(node.preferredMaxLayoutWidth, 100)
+        XCTAssertEqual(node.lineBreakMode, .byClipping)
+        XCTAssertEqual(node.numberOfLines, 95)
+    }
+    
 }
