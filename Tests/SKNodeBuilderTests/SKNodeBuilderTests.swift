@@ -3,6 +3,7 @@ import XCTest
 import SpriteKit
 
 final class SKNodeBuilderTests: XCTestCase {
+    
     func testDefaultBuilder() throws {
         
         let node = Builder<SKNode>()
@@ -23,4 +24,27 @@ final class SKNodeBuilderTests: XCTestCase {
         XCTAssertEqual(node.name, "test_node")
         
     }
+    
+    func testSpriteBuilder() throws {
+        
+        let node = Builder<SKSpriteNode>()
+            .size(CGSize(width: 32, height: 32))
+            .anchorPoint(CGPoint(x: 1, y: 1))
+            .centerRect(CGRect(x: 0, y: 0, width: 320, height: 320))
+            .colorBlendFactor(0b0001)
+            .lightingBitMask(0b0010)
+            .shadowedBitMask(0b0100)
+            .shadowCastBitMask(0b1000)
+            .node
+        
+        XCTAssertEqual(node.size, CGSize(width: 32, height: 32))
+        XCTAssertEqual(node.anchorPoint, CGPoint(x: 1, y: 1))
+        XCTAssertEqual(node.centerRect, CGRect(x: 0, y: 0, width: 320, height: 320))
+        XCTAssertEqual(node.colorBlendFactor, 0b0001)
+        XCTAssertEqual(node.lightingBitMask, 0b0010)
+        XCTAssertEqual(node.shadowedBitMask, 0b0100)
+        XCTAssertEqual(node.shadowCastBitMask, 0b1000)
+        
+    }
+    
 }
