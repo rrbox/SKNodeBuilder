@@ -35,6 +35,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .lightingBitMask(0b0010)
             .shadowedBitMask(0b0100)
             .shadowCastBitMask(0b1000)
+            .color(.green)
             .node
         
         XCTAssertEqual(node.size, CGSize(width: 32, height: 32))
@@ -44,6 +45,9 @@ final class SKNodeBuilderTests: XCTestCase {
         XCTAssertEqual(node.lightingBitMask, 0b0010)
         XCTAssertEqual(node.shadowedBitMask, 0b0100)
         XCTAssertEqual(node.shadowCastBitMask, 0b1000)
+#if os(iOS)
+        XCTAssertEqual(node.color, .green)
+#endif
         
     }
     
@@ -59,6 +63,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .preferredMaxLayoutWidth(100)
             .lineBreakMode(.byClipping)
             .numberOfLines(95)
+            .color(.green)
             .node
         
         XCTAssertEqual(node.text, "Sample")
@@ -70,6 +75,9 @@ final class SKNodeBuilderTests: XCTestCase {
         XCTAssertEqual(node.preferredMaxLayoutWidth, 100)
         XCTAssertEqual(node.lineBreakMode, .byClipping)
         XCTAssertEqual(node.numberOfLines, 95)
+#if os(iOS)
+        XCTAssertEqual(node.color, .green)
+#endif
     }
     
 }
