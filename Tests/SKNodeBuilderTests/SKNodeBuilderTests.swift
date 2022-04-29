@@ -78,6 +78,7 @@ final class SKNodeBuilderTests: XCTestCase {
 #if os(iOS)
         XCTAssertEqual(node.color, .green)
 #endif
+        
     }
     
     func testShapeBuilder() throws {
