@@ -13,7 +13,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .setScale(2)
             .alpha(0.5)
             .name("test_node")
-            .node
+            .node()
         
         XCTAssertEqual(node.position, CGPoint(x: 1, y: 0))
         XCTAssertEqual(node.zPosition, 1)
@@ -36,7 +36,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .shadowedBitMask(0b0100)
             .shadowCastBitMask(0b1000)
             .color(.green)
-            .node
+            .node()
         
         XCTAssertEqual(node.size, CGSize(width: 32, height: 32))
         XCTAssertEqual(node.anchorPoint, CGPoint(x: 1, y: 1))
@@ -58,13 +58,13 @@ final class SKNodeBuilderTests: XCTestCase {
             .fontColor(.green)
             .fontName("Times")
             .fontSize(100)
-            .vertivalAlignment(.center)
+            .verticalAlignment(.center)
             .horizontalAlignment(.left)
             .preferredMaxLayoutWidth(100)
             .lineBreakMode(.byClipping)
             .numberOfLines(95)
             .color(.green)
-            .node
+            .node()
         
         XCTAssertEqual(node.text, "Sample")
         XCTAssertEqual(node.fontColor, SKColor.green)
@@ -93,7 +93,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .miterLimit(3)
             .isAntialiased(false)
             .blendMode(.add)
-            .node
+            .node()
         
         XCTAssertEqual(node.path, CGPath(rect: CGRect(x: 0, y: 0, width: 32, height: 32), transform: nil))
         XCTAssertEqual(node.fillColor, .red)
