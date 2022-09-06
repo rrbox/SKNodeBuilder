@@ -7,71 +7,120 @@
 
 import SpriteKit
 
-
-public protocol BuilderProtocol {
+/// 座標変更のためのモディファイアです.
+public struct Position<Node: SKNode>: Modifier {
+    public var body: CGPoint
     
-    associatedtype Body: SKNode
-    
-    var node: Body { get }
-    
+    public func mod(node: Node) {
+        node.position = self.body
+    }
 }
+
+/// x, y スケールを変更するためのモディファイアです.
+public struct Scale<Node: SKNode>: Modifier {
+    public var body: CGFloat
+    
+    public func mod(node: Node) {
+        node.setScale(self.body)
+    }
+}
+
+/// x スケールを変更するためのモディファイアです.
+public struct XScale<Node: SKNode>: Modifier {
+    public var body: CGFloat
+    
+    public func mod(node: Node) {
+        node.xScale = self.body
+    }
+}
+
+/// y スケールを変更するためのモディファイアです.
+public struct YScale<Node: SKNode>: Modifier {
+    public var body: CGFloat
+    
+    public func mod(node: Node) {
+        node.yScale = self.body
+    }
+}
+
+/// zPosition を変更するためのモディファイアです.
+public struct ZPosition<Node: SKNode>: Modifier {
+    public var body: CGFloat
+    
+    public func mod(node: Node) {
+        node.zPosition = self.body
+    }
+}
+
+/// zRotation を変更するためのモディファイアです.
+public struct ZRotation<Node: SKNode>: Modifier {
+    public var body: CGFloat
+    
+    public func mod(node: Node) {
+        node.zRotation = self.body
+    }
+}
+
+/// alpha を変更するためのモディファイアです.
+public struct Alpha<Node: SKNode>: Modifier {
+    var body: CGFloat
+    
+    public func mod(node: Node) {
+        node.alpha = self.body
+    }
+}
+
+/// name を変更するためのモディファイアです.
+public struct Name<Node: SKNode>: Modifier {
+    var body: String?
+    
+    public func mod(node: Node) {
+        node.name = self.body
+    }
+}
+
 
 
 public extension BuilderProtocol {
     
-    @discardableResult func position(_ value: CGPoint) -> Self {
-        self.node.position = value
-        return self
+    /// 座標を変更します.
+    @discardableResult func position(_ value: CGPoint) -> Next<Position<Node>> {
+        Position<Self.Mod.Node>.link(from: .init(body: value), previous: self)
     }
     
-    @discardableResult func zPosition(_ value: CGFloat) -> Self {
-        self.node.zPosition = value
-        return self
+    /// スケールを変更します.
+    @discardableResult func setScale(_ value: CGFloat) -> Next<Scale<Node>> {
+        Scale<Self.Mod.Node>.link(from: .init(body: value), previous: self)
     }
     
-    @discardableResult func zRotation(_ value: CGFloat) -> Self {
-        self.node.zRotation = value
-        return self
+    /// x スケールを変更します.
+    @discardableResult func xScale(_ value: CGFloat) -> Next<XScale<Node>> {
+        XScale<Node>.link(from: .init(body: value), previous: self)
     }
     
-    @discardableResult func setScale(_ value: CGFloat) -> Self {
-        self.node.setScale(value)
-        return self
+    /// y スケールを変更します.
+    @discardableResult func yScale(_ value: CGFloat) -> Next<YScale<Node>> {
+        YScale<Node>.link(from: .init(body: value), previous: self)
     }
     
-    @discardableResult func alpha(_ value: CGFloat) -> Self {
-        self.node.alpha = value
-        return self
+    /// zPosition を変更します.
+    @discardableResult func zPosition(_ value: CGFloat) -> Next<ZPosition<Node>> {
+        ZPosition<Node>.link(from: .init(body: value), previous: self)
     }
     
-    @discardableResult func xScale(_ value: CGFloat) -> Self {
-        self.node.xScale = value
-        return self
+    /// zRotation を変更します.
+    @discardableResult func zRotation(_ value: CGFloat) -> Next<ZRotation<Node>> {
+        ZRotation<Node>.link(from: .init(body: value), previous: self)
     }
     
-    @discardableResult func yScale(_ value: CGFloat) -> Self {
-        self.node.yScale = value
-        return self
+    /// alpha を変更します.
+    @discardableResult func alpha(_ value: CGFloat) -> Next<Alpha<Node>> {
+        Alpha<Node>.link(from: .init(body: value), previous: self)
     }
     
-    @discardableResult func name(_ value: String?) -> Self {
-        self.node.name = value
-        return self
-    }
-    
-    @discardableResult func physicsBody(_ value: SKPhysicsBody?) -> Self {
-        self.node.physicsBody = value
-        return self
-    }
-    
-    @discardableResult func constrains(_ value: [SKConstraint]?) -> Self {
-        self.node.constraints = value
-        return self
-    }
-    
-    @discardableResult func isUserInteractionEnabled(_ value: Bool) -> Self {
-        self.node.isUserInteractionEnabled = value
-        return self
+    /// name を変更します.
+    @discardableResult func name(_ value: String?) -> Next<Name<Node>> {
+        Name<Node>.link(from: .init(body: value), previous: self)
     }
     
 }
