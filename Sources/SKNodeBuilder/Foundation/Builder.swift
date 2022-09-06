@@ -7,71 +7,85 @@
 
 import SpriteKit
 
-final public class Builder<Body: SKNode>: NSObject, BuilderProtocol {
+/// モディファイアを作成します. 変更対象のノード は `mod(node:)` で取得します.
+///
+/// 作成した modifier オブジェクトは, BuilderProtocol の `modifier(mod:)` にセットして使用します.
+public protocol Modifier {
+    /// SKNode のサブクラス.
+    associatedtype Node: SKNode
     
-    public var node: Body {
-        self.body
-    }
-    
-    private let body: Body
-    
-    init(_ body: Body) {
-        self.body = body
-    }
-    
-    public override init() {
-        self.body = Body()
-    }
-    
-    public init?(fileNamed filename: String) {
-        if let body = Body(fileNamed: filename) {
-            self.body = body
-        } else {
-            return nil
-        }
-    }
-    
-    public init(fileNamed filename: String, securelyWithClasses classes: Set<AnyHashable>) throws {
-        try self.body = Body(fileNamed: filename, securelyWithClasses: classes)
-    }
+    /// Node 型のオブジェクトに対する変更を定義します.
+    func mod(node: Node)
     
 }
 
-final public class UnownedNodeBuilder<Body: SKNode>: NSObject, BuilderProtocol {
-    
-    public var node: Body {
-        self.body
-    }
-    
-    private unowned let body: Body
-    
-    internal init(_ body: Body) {
-        self.body = body
-    }
+/// ビルダーを定義します.
+public protocol BuilderProtocol {
+    associatedtype Mod: Modifier
+    var modData: Mod { get set }
+    func mod(node: Mod.Node)
     
 }
-
-/// 後方互換性のサポート.
-///- attention: v3.2.0 以降は非推奨となります.
-public typealias ChildNodeBuilder = UnownedNodeBuilder
 
 public extension BuilderProtocol {
+    typealias Next<T: Modifier> = Link<Self, T> where T.Node == Self.Node
+    typealias Node = Self.Mod.Node
     
-    @discardableResult func add<Node: SKNode>(child builer: Builder<Node>) -> Self {
-        self.node.addChild(builer.node)
-        return self
+    /// 定義されたビルダーからノードを生成します.
+    ///
+    /// Node の型によらず, ノードの生成は `Node()` から開始されます.
+    func node() -> Node {
+        let node = Mod.Node()
+        self.mod(node: node)
+        return node
     }
     
-    @discardableResult func add<Node: SKNode>(child node: Node, build: (UnownedNodeBuilder<Node>) -> () = {_ in}) -> Self {
-        self.node.addChild(node)
-        build(UnownedNodeBuilder<Node>(node))
-        return self
+    /// ビルダーで定義されたプロセスを任意のノードに対して実行します.
+    func process(node: Self.Mod.Node) -> Self.Mod.Node {
+        self.mod(node: node)
+        return node
     }
     
-    @discardableResult func insert<Node: SKNode>(child node: Node, at index: Int, build: (UnownedNodeBuilder<Node>) -> () = {_ in}) -> Self {
-        self.node.insertChild(node, at: index)
-        build(UnownedNodeBuilder<Node>(node))
-        return self
+    /// モディファイアをプロセスに追加します.
+    func modifier<T: Modifier>(mod: T) -> Next<T> {
+        T.link(from: mod, previous: self)
+    }
+    
+}
+
+extension Modifier {
+    static func link<T: BuilderProtocol>(from mod: Self, previous: T) -> Link<T, Self> where T.Mod.Node == Self.Node {
+        .init(previous: previous, modData: mod)
+    }
+    
+}
+
+public struct Link<Previous: BuilderProtocol, Mod: Modifier>: BuilderProtocol where Previous.Mod.Node == Mod.Node {
+    var previous: Previous
+    public var modData: Mod
+    
+    public func mod(node: Mod.Node) {
+        self.previous.mod(node: node)
+        self.modData.mod(node: node)
+    }
+    
+}
+
+public struct Empty<Node: SKNode>: Modifier {
+    public func mod(node: Node) {}
+    
+}
+
+/// ビルダーの起点となる構造体です.
+public struct Builder<Node: SKNode>: BuilderProtocol {
+    public typealias Mod = Empty<Node>
+    
+    public func mod(node: Node) {}
+    
+    public var modData: Empty<Node>
+    
+    public init() {
+        self.modData = .init()
     }
     
 }
