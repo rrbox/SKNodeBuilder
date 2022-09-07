@@ -10,7 +10,7 @@ import SpriteKit
 public typealias LabelBuilder = Builder<SKLabelNode>
 
 /// name space of SKLabelNode builder's modifiers.
-public enum Label {
+public enum LabelModifiers {
     public struct Text: Modifier {
         var body: String?
         
@@ -118,56 +118,56 @@ public enum Label {
 }
 
 public extension BuilderProtocol where Node == SKLabelNode {
-    @discardableResult func text(_ value: String?) -> Next<Label.Text> {
-        self.modifier(mod: Label.Text(body: value))
+    @discardableResult func text(_ value: String?) -> Next<LabelModifiers.Text> {
+        self.modifier(mod: LabelModifiers.Text(body: value))
     }
     
-    @discardableResult func attributedText(_ value: NSAttributedString) -> Next<Label.AttributedText> {
-        self.modifier(mod: Label.AttributedText(body: value))
+    @discardableResult func attributedText(_ value: NSAttributedString) -> Next<LabelModifiers.AttributedText> {
+        self.modifier(mod: LabelModifiers.AttributedText(body: value))
     }
     
-    @discardableResult func fontColor(_ value: SKColor?) -> Next<Label.FontColor> {
-        self.modifier(mod: Label.FontColor(body: value))
+    @discardableResult func fontColor(_ value: SKColor?) -> Next<LabelModifiers.FontColor> {
+        self.modifier(mod: LabelModifiers.FontColor(body: value))
     }
     
-    @discardableResult func fontName(_ value: String?) -> Next<Label.FontName> {
-        self.modifier(mod: Label.FontName(body: value))
+    @discardableResult func fontName(_ value: String?) -> Next<LabelModifiers.FontName> {
+        self.modifier(mod: LabelModifiers.FontName(body: value))
     }
     
-    @discardableResult func fontSize(_ value: CGFloat) -> Next<Label.FontSize> {
-        self.modifier(mod: Label.FontSize(body: value))
+    @discardableResult func fontSize(_ value: CGFloat) -> Next<LabelModifiers.FontSize> {
+        self.modifier(mod: LabelModifiers.FontSize(body: value))
     }
     
-    @discardableResult func verticalAlignment(_ value: SKLabelVerticalAlignmentMode) -> Next<Label.VerticalAlignment> {
-        self.modifier(mod: Label.VerticalAlignment(body: value))
+    @discardableResult func verticalAlignment(_ value: SKLabelVerticalAlignmentMode) -> Next<LabelModifiers.VerticalAlignment> {
+        self.modifier(mod: LabelModifiers.VerticalAlignment(body: value))
     }
     
-    @discardableResult func horizontalAlignment(_ value: SKLabelHorizontalAlignmentMode) -> Next<Label.HorizontalAlignment> {
-        self.modifier(mod: Label.HorizontalAlignment(body: value))
+    @discardableResult func horizontalAlignment(_ value: SKLabelHorizontalAlignmentMode) -> Next<LabelModifiers.HorizontalAlignment> {
+        self.modifier(mod: LabelModifiers.HorizontalAlignment(body: value))
     }
     
-    @discardableResult func preferredMaxLayoutWidth(_ value: CGFloat) -> Next<Label.PreferredMaxLayoutWidth> {
-        self.modifier(mod: Label.PreferredMaxLayoutWidth(body: value))
+    @discardableResult func preferredMaxLayoutWidth(_ value: CGFloat) -> Next<LabelModifiers.PreferredMaxLayoutWidth> {
+        self.modifier(mod: LabelModifiers.PreferredMaxLayoutWidth(body: value))
     }
     
-    @discardableResult func lineBreakMode(_ value: NSLineBreakMode) -> Next<Label.LineBreakMode> {
-        self.modifier(mod: Label.LineBreakMode(body: value))
+    @discardableResult func lineBreakMode(_ value: NSLineBreakMode) -> Next<LabelModifiers.LineBreakMode> {
+        self.modifier(mod: LabelModifiers.LineBreakMode(body: value))
     }
     
-    @discardableResult func numberOfLines(_ value: Int) -> Next<Label.NumberOfLines> {
-        self.modifier(mod: Label.NumberOfLines(body: value))
+    @discardableResult func numberOfLines(_ value: Int) -> Next<LabelModifiers.NumberOfLines> {
+        self.modifier(mod: LabelModifiers.NumberOfLines(body: value))
     }
     
-    @discardableResult func color(_ value: SKColor) -> Next<Label.Color> {
-        self.modifier(mod: Label.Color(body: value))
+    @discardableResult func color(_ value: SKColor) -> Next<LabelModifiers.Color> {
+        self.modifier(mod: LabelModifiers.Color(body: value))
     }
     
-    @discardableResult func colorBlendFactor(_ value: CGFloat) -> Next<Label.ColorBlendFactor> {
-        self.modifier(mod: Label.ColorBlendFactor(body: value))
+    @discardableResult func colorBlendFactor(_ value: CGFloat) -> Next<LabelModifiers.ColorBlendFactor> {
+        self.modifier(mod: LabelModifiers.ColorBlendFactor(body: value))
     }
     
-    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<Label.BlendMode> {
-        self.modifier(mod: Label.BlendMode(body: value))
+    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<LabelModifiers.BlendMode> {
+        self.modifier(mod: LabelModifiers.BlendMode(body: value))
     }
 
 }

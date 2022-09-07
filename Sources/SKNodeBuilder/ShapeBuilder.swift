@@ -10,7 +10,7 @@ import SpriteKit
 public typealias ShapeBuilder = Builder<SKShapeNode>
 
 /// name space of SKShapeNode builder's modifiers.
-public enum Shape {
+public enum ShapeModifiers {
     public struct Path: Modifier {
         var body: CGPath?
         
@@ -136,64 +136,64 @@ public enum Shape {
 }
 
 public extension BuilderProtocol where Node == SKShapeNode {
-    @discardableResult func path(_ value: CGPath?) -> Next<Shape.Path> {
-        self.modifier(mod: Shape.Path(body: value))
+    @discardableResult func path(_ value: CGPath?) -> Next<ShapeModifiers.Path> {
+        self.modifier(mod: ShapeModifiers.Path(body: value))
     }
     
-    @discardableResult func fillColor(_ value: SKColor) -> Next<Shape.FillColor> {
-        self.modifier(mod: Shape.FillColor(body: value))
+    @discardableResult func fillColor(_ value: SKColor) -> Next<ShapeModifiers.FillColor> {
+        self.modifier(mod: ShapeModifiers.FillColor(body: value))
     }
     
-    @discardableResult func fillTexture(_ value: SKTexture?) -> Next<Shape.FillTexture> {
-        self.modifier(mod: Shape.FillTexture(body: value))
+    @discardableResult func fillTexture(_ value: SKTexture?) -> Next<ShapeModifiers.FillTexture> {
+        self.modifier(mod: ShapeModifiers.FillTexture(body: value))
     }
     
-    @discardableResult func lineWidth(_ value: CGFloat) -> Next<Shape.LineWidth> {
-        self.modifier(mod: Shape.LineWidth(body: value))
+    @discardableResult func lineWidth(_ value: CGFloat) -> Next<ShapeModifiers.LineWidth> {
+        self.modifier(mod: ShapeModifiers.LineWidth(body: value))
     }
     
-    @discardableResult func strokeColor(_ value: SKColor) -> Next<Shape.StrokeColor> {
-        self.modifier(mod: Shape.StrokeColor(body: value))
+    @discardableResult func strokeColor(_ value: SKColor) -> Next<ShapeModifiers.StrokeColor> {
+        self.modifier(mod: ShapeModifiers.StrokeColor(body: value))
     }
     
-    @discardableResult func strokeTexture(_ value: SKTexture?) -> Next<Shape.StrokeTexture> {
-        self.modifier(mod: Shape.StrokeTexture(body: value))
+    @discardableResult func strokeTexture(_ value: SKTexture?) -> Next<ShapeModifiers.StrokeTexture> {
+        self.modifier(mod: ShapeModifiers.StrokeTexture(body: value))
     }
     
-    @discardableResult func glowWidth(_ value: CGFloat) -> Next<Shape.GlowWidth> {
-        self.modifier(mod: Shape.GlowWidth(body: value))
+    @discardableResult func glowWidth(_ value: CGFloat) -> Next<ShapeModifiers.GlowWidth> {
+        self.modifier(mod: ShapeModifiers.GlowWidth(body: value))
     }
     
-    @discardableResult func lineCap(_ value: CGLineCap) -> Next<Shape.LineCap> {
-        self.modifier(mod: Shape.LineCap(body: value))
+    @discardableResult func lineCap(_ value: CGLineCap) -> Next<ShapeModifiers.LineCap> {
+        self.modifier(mod: ShapeModifiers.LineCap(body: value))
     }
     
-    @discardableResult func lineJoin(_ value: CGLineJoin) -> Next<Shape.LineJoin> {
-        self.modifier(mod: Shape.LineJoin(body: value))
+    @discardableResult func lineJoin(_ value: CGLineJoin) -> Next<ShapeModifiers.LineJoin> {
+        self.modifier(mod: ShapeModifiers.LineJoin(body: value))
     }
     
-    @discardableResult func miterLimit(_ value: CGFloat) -> Next<Shape.MiterLimit> {
-        self.modifier(mod: Shape.MiterLimit(body: value))
+    @discardableResult func miterLimit(_ value: CGFloat) -> Next<ShapeModifiers.MiterLimit> {
+        self.modifier(mod: ShapeModifiers.MiterLimit(body: value))
     }
     
-    @discardableResult func isAntialiased(_ value: Bool) -> Next<Shape.IsAntialiased> {
-        self.modifier(mod: Shape.IsAntialiased(body: value))
+    @discardableResult func isAntialiased(_ value: Bool) -> Next<ShapeModifiers.IsAntialiased> {
+        self.modifier(mod: ShapeModifiers.IsAntialiased(body: value))
     }
     
-    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<Shape.BlendMode> {
-        self.modifier(mod: Shape.BlendMode(body: value))
+    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<ShapeModifiers.BlendMode> {
+        self.modifier(mod: ShapeModifiers.BlendMode(body: value))
     }
     
-    @discardableResult func strokeShader(_ value: SKShader?) -> Next<Shape.StrokeShader> {
-        self.modifier(mod: Shape.StrokeShader(body: value))
+    @discardableResult func strokeShader(_ value: SKShader?) -> Next<ShapeModifiers.StrokeShader> {
+        self.modifier(mod: ShapeModifiers.StrokeShader(body: value))
     }
     
-    @discardableResult func fillShader(_ value: SKShader?) -> Next<Shape.FillShader> {
-        self.modifier(mod: Shape.FillShader(body: value))
+    @discardableResult func fillShader(_ value: SKShader?) -> Next<ShapeModifiers.FillShader> {
+        self.modifier(mod: ShapeModifiers.FillShader(body: value))
     }
     
-    @discardableResult func attributeValues(_ value: [String: SKAttributeValue]) -> Next<Shape.AttributeValues> {
-        self.modifier(mod: Shape.AttributeValues(body: value))
+    @discardableResult func attributeValues(_ value: [String: SKAttributeValue]) -> Next<ShapeModifiers.AttributeValues> {
+        self.modifier(mod: ShapeModifiers.AttributeValues(body: value))
     }
     
 }
