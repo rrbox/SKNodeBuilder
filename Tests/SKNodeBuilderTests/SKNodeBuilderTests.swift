@@ -5,6 +5,10 @@ import SpriteKit
 final class SKNodeBuilderTests: XCTestCase {
     
     func testDefaultBuilder() throws {
+        let childNode = SKNode()
+        childNode.name = "sample_2"
+        let childLabel = SKLabelNode(text: "sample label")
+        
         let node = Builder<SKNode>()
             .position(CGPoint(x: 1, y: 0))
             .zPosition(1)
@@ -12,6 +16,15 @@ final class SKNodeBuilderTests: XCTestCase {
             .setScale(2)
             .alpha(0.5)
             .name("test_node")
+            .addChild(
+                builder: Builder<SKNode>()
+                    .name("sample_0")
+                    .position(CGPoint(x: 32, y: 32)))
+            .addChild(childNode)
+            .addChild(
+                Builder<SKLabelNode>()
+                    .fontColor(.red),
+                withNode: childLabel)
             .node()
         
         XCTAssertEqual(node.position, CGPoint(x: 1, y: 0))
@@ -20,6 +33,8 @@ final class SKNodeBuilderTests: XCTestCase {
         XCTAssertEqual(node.xScale, 2)
         XCTAssertEqual(node.yScale, 2)
         XCTAssertEqual(node.alpha, 0.5)
+        XCTAssertEqual(node.children.count, 3)
+        XCTAssertEqual(node.childNode(withName: "sample_0")!.position, CGPoint(x: 32, y: 32))
         XCTAssertEqual(node.name, "test_node")
         
     }
