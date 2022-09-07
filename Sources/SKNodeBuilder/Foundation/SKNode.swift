@@ -84,45 +84,44 @@ public enum Standard {
 }
 
 public extension BuilderProtocol {
-    
     /// 座標を変更します.
     @discardableResult func position(_ value: CGPoint) -> Next<Standard.Position<Node>> {
-        Standard.Position<Self.Mod.Node>.link(from: .init(body: value), previous: self)
+        self.modifier(mod: Standard.Position(body: value))
     }
     
     /// スケールを変更します.
     @discardableResult func setScale(_ value: CGFloat) -> Next<Standard.Scale<Node>> {
-        Standard.Scale<Self.Mod.Node>.link(from: .init(body: value), previous: self)
+        self.modifier(mod: Standard.Scale(body: value))
     }
     
     /// x スケールを変更します.
     @discardableResult func xScale(_ value: CGFloat) -> Next<Standard.XScale<Node>> {
-        Standard.XScale<Node>.link(from: .init(body: value), previous: self)
+        self.modifier(mod: Standard.XScale(body: value))
     }
     
     /// y スケールを変更します.
     @discardableResult func yScale(_ value: CGFloat) -> Next<Standard.YScale<Node>> {
-        Standard.YScale<Node>.link(from: .init(body: value), previous: self)
+        self.modifier(mod: Standard.YScale(body: value))
     }
     
     /// zPosition を変更します.
     @discardableResult func zPosition(_ value: CGFloat) -> Next<Standard.ZPosition<Node>> {
-        Standard.ZPosition<Node>.link(from: .init(body: value), previous: self)
+        self.modifier(mod: Standard.ZPosition(body: value))
     }
     
     /// zRotation を変更します.
     @discardableResult func zRotation(_ value: CGFloat) -> Next<Standard.ZRotation<Node>> {
-        Standard.ZRotation<Node>.link(from: .init(body: value), previous: self)
+        self.modifier(mod: Standard.ZRotation(body: value))
     }
     
     /// alpha を変更します.
     @discardableResult func alpha(_ value: CGFloat) -> Next<Standard.Alpha<Node>> {
-        Standard.Alpha<Node>.link(from: .init(body: value), previous: self)
+        self.modifier(mod: Standard.Alpha(body: value))
     }
     
     /// name を変更します.
     @discardableResult func name(_ value: String?) -> Next<Standard.Name<Node>> {
-        Standard.Name<Node>.link(from: .init(body: value), previous: self)
+        self.modifier(mod: Standard.Name(body: value))
     }
     
 }
