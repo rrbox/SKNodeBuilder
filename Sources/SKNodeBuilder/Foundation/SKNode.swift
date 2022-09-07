@@ -162,14 +162,14 @@ public extension BuilderProtocol {
     
     /// 子ノードをビルダーで作成し, 追加します.
     ///
-    /// [Modiifer](doc:SKNodeBuilder/StandardModifiers/AddChildBuilder) をラップしたメソッドです.
+    /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChildBuilder) をラップしたメソッドです.
     @discardableResult func addChild<T: BuilderProtocol>(builder value: T) -> Next<StandardModifiers.AddChildBuilder<T, Node>> {
         self.modifier(mod: StandardModifiers.AddChildBuilder(body: value))
     }
     
     /// 子ノードをビルダーで作成し, 追加します.
     ///
-    /// [Modiifer](doc:SKNodeBuilder/StandardModifiers/AddChildWithNode) をラップしたメソッドです.
+    /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChildWithNode) をラップしたメソッドです.
     /// - attention: `process(node:)` など, 編集フローとしてビルダーを使用する場合, 子ノードの取り合いが発生することがあります.
     /// - attention: 引数に `SKSpriteNode(color:, size:)` のように直接インスタンス化して参照をセットすると, エラーが起こります. これはModifier が参照を unowned で所持するためです. 直接インスタンス化したい場合は `addChild<T: BuilderProtocol>(_ : T)` を使ってください.
     @discardableResult func addChild<T: BuilderProtocol>(_ value: T, withNode node: T.Node) -> Next<StandardModifiers.AddChildWithNode<T, Node>> {
@@ -178,7 +178,7 @@ public extension BuilderProtocol {
     
     /// 子ノードを直接追加します.
     ///
-    /// [Modiifer](doc:SKNodeBuilder/StandardModifiers/AddChild) をラップしたメソッドです.
+    /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChild) をラップしたメソッドです.
     /// - attention: `process(node:)` など, 編集フローとしてビルダーを使用する場合, 子ノードの取り合いが発生することがあります.
     /// - attention: 引数に `SKSpriteNode(color:, size:)` のように直接インスタンス化して参照をセットすると, エラーが起こります. これはModifier が参照を unowned で所持するためです. 直接インスタンス化したい場合は `addChild<T: BuilderProtocol>(_ : T)` を使ってください.
     @discardableResult func addChild<T: SKNode>(_ value: T) -> Next<StandardModifiers.AddChild<T, Node>> {
