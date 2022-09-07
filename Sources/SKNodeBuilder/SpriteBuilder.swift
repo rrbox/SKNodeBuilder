@@ -9,8 +9,8 @@ import SpriteKit
 
 public typealias SpriteBuilder = Builder<SKSpriteNode>
 
-/// name space of SKSpriteNode builder's modifiers.
-public enum Sprite {
+/// Name space of SKSpriteNode builder's modifiers.
+public enum SpriteModifiers {
     public struct Texture: Modifier {
         var body: SKTexture
         
@@ -121,57 +121,56 @@ public enum Sprite {
 }
 
 public extension BuilderProtocol where Node == SKSpriteNode {
-    
-    @discardableResult func texture(_ value: SKTexture) -> Next<Sprite.Texture> {
-        self.modifier(mod: Sprite.Texture(body: value))
+    @discardableResult func texture(_ value: SKTexture) -> Next<SpriteModifiers.Texture> {
+        self.modifier(mod: SpriteModifiers.Texture(body: value))
     }
     
-    @discardableResult func size(_ value: CGSize) -> Next<Sprite.Size> {
-        self.modifier(mod: Sprite.Size(body: value))
+    @discardableResult func size(_ value: CGSize) -> Next<SpriteModifiers.Size> {
+        self.modifier(mod: SpriteModifiers.Size(body: value))
     }
     
-    @discardableResult func anchorPoint(_ value: CGPoint) -> Next<Sprite.AnchorPoint> {
-        self.modifier(mod: Sprite.AnchorPoint(body: value))
+    @discardableResult func anchorPoint(_ value: CGPoint) -> Next<SpriteModifiers.AnchorPoint> {
+        self.modifier(mod: SpriteModifiers.AnchorPoint(body: value))
     }
     
-    @discardableResult func centerRect(_ value: CGRect) -> Next<Sprite.CenterRect> {
-        self.modifier(mod: Sprite.CenterRect(body: value))
+    @discardableResult func centerRect(_ value: CGRect) -> Next<SpriteModifiers.CenterRect> {
+        self.modifier(mod: SpriteModifiers.CenterRect(body: value))
     }
     
-    @discardableResult func color(_ value: SKColor) -> Next<Sprite.Color> {
-        self.modifier(mod: Sprite.Color(body: value))
+    @discardableResult func color(_ value: SKColor) -> Next<SpriteModifiers.Color> {
+        self.modifier(mod: SpriteModifiers.Color(body: value))
     }
     
-    @discardableResult func colorBlendFactor(_ value: CGFloat) -> Next<Sprite.ColorBlendFactor> {
-        self.modifier(mod: Sprite.ColorBlendFactor(body: value))
+    @discardableResult func colorBlendFactor(_ value: CGFloat) -> Next<SpriteModifiers.ColorBlendFactor> {
+        self.modifier(mod: SpriteModifiers.ColorBlendFactor(body: value))
     }
     
-    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<Sprite.BlendMode> {
-        self.modifier(mod: Sprite.BlendMode(body: value))
+    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<SpriteModifiers.BlendMode> {
+        self.modifier(mod: SpriteModifiers.BlendMode(body: value))
     }
     
-    @discardableResult func lightingBitMask(_ value: UInt32) -> Next<Sprite.LightingBitMask> {
-        self.modifier(mod: Sprite.LightingBitMask(body: value))
+    @discardableResult func lightingBitMask(_ value: UInt32) -> Next<SpriteModifiers.LightingBitMask> {
+        self.modifier(mod: SpriteModifiers.LightingBitMask(body: value))
     }
     
-    @discardableResult func shadowedBitMask(_ value: UInt32) -> Next<Sprite.ShadowedBitMask> {
-        self.modifier(mod: Sprite.ShadowedBitMask(body: value))
+    @discardableResult func shadowedBitMask(_ value: UInt32) -> Next<SpriteModifiers.ShadowedBitMask> {
+        self.modifier(mod: SpriteModifiers.ShadowedBitMask(body: value))
     }
     
-    @discardableResult func shadowCastBitMask(_ value: UInt32) -> Next<Sprite.ShadowCastBitMask> {
-        self.modifier(mod: Sprite.ShadowCastBitMask(body: value))
+    @discardableResult func shadowCastBitMask(_ value: UInt32) -> Next<SpriteModifiers.ShadowCastBitMask> {
+        self.modifier(mod: SpriteModifiers.ShadowCastBitMask(body: value))
     }
     
-    @discardableResult func normalTexture(_ value: SKTexture?) -> Next<Sprite.NormalTexture> {
-        self.modifier(mod: Sprite.NormalTexture(body: value))
+    @discardableResult func normalTexture(_ value: SKTexture?) -> Next<SpriteModifiers.NormalTexture> {
+        self.modifier(mod: SpriteModifiers.NormalTexture(body: value))
     }
     
-    @discardableResult func shader(_ value: SKShader?) -> Next<Sprite.Shader> {
-        self.modifier(mod: Sprite.Shader(body: value))
+    @discardableResult func shader(_ value: SKShader?) -> Next<SpriteModifiers.Shader> {
+        self.modifier(mod: SpriteModifiers.Shader(body: value))
     }
     
-    @discardableResult func setValue(_ value: SKAttributeValue, forAttribute key: String) -> Next<Sprite.SetValue> {
-        self.modifier(mod: Sprite.SetValue(value: value, key: key))
+    @discardableResult func setValue(_ value: SKAttributeValue, forAttribute key: String) -> Next<SpriteModifiers.SetValue> {
+        self.modifier(mod: SpriteModifiers.SetValue(value: value, key: key))
     }
     
 }

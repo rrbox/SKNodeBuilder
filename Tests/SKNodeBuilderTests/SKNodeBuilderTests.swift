@@ -5,7 +5,6 @@ import SpriteKit
 final class SKNodeBuilderTests: XCTestCase {
     
     func testDefaultBuilder() throws {
-        
         let node = Builder<SKNode>()
             .position(CGPoint(x: 1, y: 0))
             .zPosition(1)
@@ -26,7 +25,6 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testSpriteBuilder() throws {
-        
         let node = Builder<SKSpriteNode>()
             .size(CGSize(width: 32, height: 32))
             .anchorPoint(CGPoint(x: 1, y: 1))
@@ -52,7 +50,6 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testLabelBuilder() throws {
-        
         let node = Builder<SKLabelNode>()
             .text("Sample")
             .fontColor(.green)
@@ -81,7 +78,6 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testShapeBuilder() throws {
-        
         let node = Builder<SKShapeNode>()
             .path(CGPath(rect: CGRect(x: 0, y: 0, width: 32, height: 32), transform: nil))
             .fillColor(.red)
