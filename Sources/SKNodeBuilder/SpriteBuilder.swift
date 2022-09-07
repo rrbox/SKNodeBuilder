@@ -9,7 +9,7 @@ import SpriteKit
 
 public typealias SpriteBuilder = Builder<SKSpriteNode>
 
-/// name space of SKSpriteNode builder's modifiers.
+/// Name space of SKSpriteNode builder's modifiers.
 public enum SpriteModifiers {
     public struct Texture: Modifier {
         var body: SKTexture

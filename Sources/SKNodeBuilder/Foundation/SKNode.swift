@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-/// name space of all SKNode subclass builder's modifiers.
+/// Name space of all SKNode subclass builder's modifiers.
 public enum StandardModifiers {
     /// 座標変更のためのモディファイアです.
     public struct Position<Node: SKNode>: Modifier {

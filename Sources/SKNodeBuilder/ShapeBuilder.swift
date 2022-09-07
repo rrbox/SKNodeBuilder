@@ -9,7 +9,7 @@ import SpriteKit
 
 public typealias ShapeBuilder = Builder<SKShapeNode>
 
-/// name space of SKShapeNode builder's modifiers.
+/// Name space of SKShapeNode builder's modifiers.
 public enum ShapeModifiers {
     public struct Path: Modifier {
         var body: CGPath?

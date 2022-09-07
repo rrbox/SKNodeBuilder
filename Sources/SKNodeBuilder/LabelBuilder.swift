@@ -9,7 +9,7 @@ import SpriteKit
 
 public typealias LabelBuilder = Builder<SKLabelNode>
 
-/// name space of SKLabelNode builder's modifiers.
+/// Name space of SKLabelNode builder's modifiers.
 public enum LabelModifiers {
     public struct Text: Modifier {
         var body: String?
