@@ -99,6 +99,7 @@ public enum StandardModifiers {
         unowned let childNode: T.Node
         
         public func mod(node: Node) {
+//            ここで, signal SIGABRT エラーが出た場合, 設定したノードのメモリが解放されている可能性があります.
             node.addChild(self.body.process(node: self.childNode))
         }
     }
@@ -110,6 +111,7 @@ public enum StandardModifiers {
         unowned let body: T
         
         public func mod(node: Node) {
+//            ここで, signal SIGABRT エラーが出た場合, 設定したノードのメモリが解放されている可能性があります.
             node.addChild(self.body)
         }
     }
