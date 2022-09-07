@@ -121,7 +121,6 @@ public enum Sprite {
 }
 
 public extension BuilderProtocol where Node == SKSpriteNode {
-    
     @discardableResult func texture(_ value: SKTexture) -> Next<Sprite.Texture> {
         self.modifier(mod: Sprite.Texture(body: value))
     }

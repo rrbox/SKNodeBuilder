@@ -136,7 +136,6 @@ public enum Shape {
 }
 
 public extension BuilderProtocol where Node == SKShapeNode {
-    
     @discardableResult func path(_ value: CGPath?) -> Next<Shape.Path> {
         self.modifier(mod: Shape.Path(body: value))
     }

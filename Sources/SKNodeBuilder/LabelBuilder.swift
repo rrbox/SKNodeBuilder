@@ -118,7 +118,6 @@ public enum Label {
 }
 
 public extension BuilderProtocol where Node == SKLabelNode {
-    
     @discardableResult func text(_ value: String?) -> Next<Label.Text> {
         self.modifier(mod: Label.Text(body: value))
     }
