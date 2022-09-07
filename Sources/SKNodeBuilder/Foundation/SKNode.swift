@@ -81,7 +81,7 @@ public enum StandardModifiers {
         }
     }
     
-    /// ``doc:SKNodeBuilder/BuilderProtocol/addChild(_:)-8d58y?context=ZmlsZTovLy9Vc2Vycy9uYW95YW1peWFzYWthL0xpYnJhcnkvRGV2ZWxvcGVyL1hjb2RlL0Rlcml2ZWREYXRhL1NLTm9kZUJ1aWxkZXItZ3dibHRseml4cXhnaWhnbm16dmRxYmNjZnh0di9CdWlsZC9Qcm9kdWN0cy9EZWJ1Zy9TS05vZGVCdWlsZGVyLmRvY2NhcmNoaXZlLw%3D%3D`` を行うためのモディフィアです.
+    /// ``doc:SKNodeBuilder/BuilderProtocol/addChild(builder:)`` を行うためのモディフィアです.
     /// ビルダーオブジェクトから `node()` メソッドにより生成さたノードを子ノードとして追加します.
     public struct AddChildBuilder<T: BuilderProtocol, Node: SKNode>: Modifier {
         var body: T
@@ -103,7 +103,7 @@ public enum StandardModifiers {
         }
     }
     
-    /// ``doc:SKNodeBuilder/BuilderProtocol/addChild(_:)-do14?context=ZmlsZTovLy9Vc2Vycy9uYW95YW1peWFzYWthL0xpYnJhcnkvRGV2ZWxvcGVyL1hjb2RlL0Rlcml2ZWREYXRhL1NLTm9kZUJ1aWxkZXItZ3dibHRseml4cXhnaWhnbm16dmRxYmNjZnh0di9CdWlsZC9Qcm9kdWN0cy9EZWJ1Zy9TS05vZGVCdWlsZGVyLmRvY2NhcmNoaXZlLw%3D%3D`` を行うためのモディフィアです.
+    /// ``doc:SKNodeBuilder/BuilderProtocol/addChild(_:)`` を行うためのモディフィアです.
     ///
     /// ノードをそのまま子ノードとして追加します.
     public struct AddChild<T: SKNode, Node: SKNode>: Modifier {
@@ -161,7 +161,7 @@ public extension BuilderProtocol {
     /// 子ノードをビルダーで作成し, 追加します.
     ///
     /// [Modiifer](doc:SKNodeBuilder/StandardModifiers/AddChildBuilder) をラップしたメソッドです.
-    @discardableResult func addChild<T: BuilderProtocol>(_ value: T) -> Next<StandardModifiers.AddChildBuilder<T, Node>> {
+    @discardableResult func addChild<T: BuilderProtocol>(builder value: T) -> Next<StandardModifiers.AddChildBuilder<T, Node>> {
         self.modifier(mod: StandardModifiers.AddChildBuilder(body: value))
     }
     
