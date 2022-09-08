@@ -43,7 +43,7 @@ struct NodeInit<T: SKNode>: NodeMake {
     }
     
     init(coder aDecoder: NSCoder) {
-        self.param = .coder(aCoder)
+        self.param = .coder(aDecoder)
     }
     
     init(fileNamed fileName: String) {
