@@ -77,7 +77,7 @@ public struct Empty<Node: SKNode>: Modifier {
 }
 
 /// ビルダーの起点となる構造体です.
-public struct Builder<Node: SKNode>: ProcessorProtocol {
+public struct Processor<Node: SKNode>: ProcessorProtocol {
     public typealias Mod = Empty<Node>
     
     public func mod(node: Node) {}

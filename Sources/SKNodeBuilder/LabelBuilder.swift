@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public typealias LabelBuilder = Builder<SKLabelNode>
+public typealias LabelBuilder = Processor<SKLabelNode>
 
 /// Name space of SKLabelNode builder's modifiers.
 public enum LabelModifiers {

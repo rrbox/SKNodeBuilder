@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public typealias ShapeBuilder = Builder<SKShapeNode>
+public typealias ShapeBuilder = Processor<SKShapeNode>
 
 /// Name space of SKShapeNode builder's modifiers.
 public enum ShapeModifiers {
