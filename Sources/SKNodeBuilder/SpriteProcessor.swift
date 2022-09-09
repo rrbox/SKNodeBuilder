@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public typealias SpriteBuilder = Processor<SKSpriteNode>
+public typealias SpriteProcessor = Processor<SKSpriteNode>
 
 /// Name space of SKSpriteNode builder's modifiers.
 public enum SpriteModifiers {
