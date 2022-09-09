@@ -120,7 +120,7 @@ public enum SpriteModifiers {
     
 }
 
-public extension BuilderProtocol where Node == SKSpriteNode {
+public extension ProcessorProtocol where Node == SKSpriteNode {
     @discardableResult func texture(_ value: SKTexture) -> Next<SpriteModifiers.Texture> {
         self.modifier(mod: SpriteModifiers.Texture(body: value))
     }

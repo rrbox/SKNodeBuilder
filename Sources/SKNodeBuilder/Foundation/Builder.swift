@@ -20,14 +20,14 @@ public protocol Modifier {
 }
 
 /// ビルダーを定義します.
-public protocol BuilderProtocol {
+public protocol ProcessorProtocol {
     associatedtype Mod: Modifier
     var modData: Mod { get set }
     func mod(node: Mod.Node)
     
 }
 
-public extension BuilderProtocol {
+public extension ProcessorProtocol {
     typealias Next<T: Modifier> = Link<Self, T> where T.Node == Self.Node
     typealias Node = Self.Mod.Node
     
@@ -54,13 +54,13 @@ public extension BuilderProtocol {
 }
 
 extension Modifier {
-    static func link<T: BuilderProtocol>(from mod: Self, previous: T) -> Link<T, Self> where T.Mod.Node == Self.Node {
+    static func link<T: ProcessorProtocol>(from mod: Self, previous: T) -> Link<T, Self> where T.Mod.Node == Self.Node {
         .init(previous: previous, modData: mod)
     }
     
 }
 
-public struct Link<Previous: BuilderProtocol, Mod: Modifier>: BuilderProtocol where Previous.Mod.Node == Mod.Node {
+public struct Link<Previous: ProcessorProtocol, Mod: Modifier>: ProcessorProtocol where Previous.Mod.Node == Mod.Node {
     var previous: Previous
     public var modData: Mod
     
@@ -77,7 +77,7 @@ public struct Empty<Node: SKNode>: Modifier {
 }
 
 /// ビルダーの起点となる構造体です.
-public struct Builder<Node: SKNode>: BuilderProtocol {
+public struct Builder<Node: SKNode>: ProcessorProtocol {
     public typealias Mod = Empty<Node>
     
     public func mod(node: Node) {}

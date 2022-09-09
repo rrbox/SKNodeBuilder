@@ -117,7 +117,7 @@ public enum LabelModifiers {
 
 }
 
-public extension BuilderProtocol where Node == SKLabelNode {
+public extension ProcessorProtocol where Node == SKLabelNode {
     @discardableResult func text(_ value: String?) -> Next<LabelModifiers.Text> {
         self.modifier(mod: LabelModifiers.Text(body: value))
     }
