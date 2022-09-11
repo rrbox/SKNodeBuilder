@@ -9,7 +9,7 @@ final class SKNodeBuilderTests: XCTestCase {
         childNode.name = "sample_2"
         let childLabel = SKLabelNode(text: "sample label")
         
-        let node = Processor<SKNode>()
+        let node = Builder(.init(), processor: Processor<SKNode>()
             .position(CGPoint(x: 1, y: 0))
             .zPosition(1)
             .zRotation(1)
@@ -17,14 +17,15 @@ final class SKNodeBuilderTests: XCTestCase {
             .alpha(0.5)
             .name("test_node")
             .addChild(
-                builder: Processor<SKNode>()
+                builder: .init(.init(),
+                               processor: Processor()
                     .name("sample_0")
-                    .position(CGPoint(x: 32, y: 32)))
+                    .position(CGPoint(x: 32, y: 32))))
             .addChild(childNode)
             .addChild(
                 Processor<SKLabelNode>()
                     .fontColor(.red),
-                withNode: childLabel)
+                withNode: childLabel))
             .node()
         
         XCTAssertEqual(node.position, CGPoint(x: 1, y: 0))
@@ -40,7 +41,7 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testSpriteBuilder() throws {
-        let node = Processor<SKSpriteNode>()
+        let node = Builder(.init(), processor: Processor<SKSpriteNode>()
             .size(CGSize(width: 32, height: 32))
             .anchorPoint(CGPoint(x: 1, y: 1))
             .centerRect(CGRect(x: 0, y: 0, width: 320, height: 320))
@@ -48,7 +49,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .lightingBitMask(0b0010)
             .shadowedBitMask(0b0100)
             .shadowCastBitMask(0b1000)
-            .color(.green)
+            .color(.green))
             .node()
         
         XCTAssertEqual(node.size, CGSize(width: 32, height: 32))
@@ -65,7 +66,7 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testLabelBuilder() throws {
-        let node = Processor<SKLabelNode>()
+        let node = Builder(.init(), processor: Processor<SKLabelNode>()
             .text("Sample")
             .fontColor(.green)
             .fontName("Times")
@@ -75,7 +76,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .preferredMaxLayoutWidth(100)
             .lineBreakMode(.byClipping)
             .numberOfLines(95)
-            .color(.green)
+            .color(.green))
             .node()
         
         XCTAssertEqual(node.text, "Sample")
@@ -93,7 +94,7 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testShapeBuilder() throws {
-        let node = Processor<SKShapeNode>()
+        let node = Builder(.init(), processor: Processor<SKShapeNode>()
             .path(CGPath(rect: CGRect(x: 0, y: 0, width: 32, height: 32), transform: nil))
             .fillColor(.red)
             .lineWidth(1)
@@ -103,7 +104,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .lineJoin(.round)
             .miterLimit(3)
             .isAntialiased(false)
-            .blendMode(.add)
+            .blendMode(.add))
             .node()
         
         XCTAssertEqual(node.path, CGPath(rect: CGRect(x: 0, y: 0, width: 32, height: 32), transform: nil))
