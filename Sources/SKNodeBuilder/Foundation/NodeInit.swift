@@ -10,6 +10,7 @@ import SpriteKit
 protocol NodeInitType {
     associatedtype Node: SKNode
 }
+
 protocol NodeMake {
     associatedtype InitType: NodeInitType
     func make() -> InitType.Node
