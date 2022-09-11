@@ -11,6 +11,7 @@ import SpriteKit
 public struct Builder<T: ProcessorProtocol> {
     public typealias Next<Mod: Modifier> = Builder<Link<T, Mod>> where Mod.Node == T.Node
     
+    let nodeInit: NodeInit<T.Node>
     let processor: T
     
     /// 定義されたビルダーからノードを生成します.
