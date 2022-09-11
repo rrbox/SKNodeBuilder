@@ -84,7 +84,7 @@ public enum StandardModifiers {
     /// ``doc:SKNodeBuilder/ProcessorProtocol/addChild(builder:)`` を行うためのモディフィアです.
     /// ビルダーオブジェクトから `node()` メソッドにより生成さたノードを子ノードとして追加します.
     public struct AddChildBuilder<T: ProcessorProtocol, Node: SKNode>: Modifier {
-        var body: T
+        var body: Builder<T>
         
         public func mod(node: Node) {
             node.addChild(self.body.node())
@@ -163,7 +163,7 @@ public extension ProcessorProtocol {
     /// 子ノードをビルダーで作成し, 追加します.
     ///
     /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChildBuilder) をラップしたメソッドです.
-    @discardableResult func addChild<T: ProcessorProtocol>(builder value: T) -> Next<StandardModifiers.AddChildBuilder<T, Node>> {
+    @discardableResult func addChild<T: ProcessorProtocol>(builder value: Builder<T>) -> Next<StandardModifiers.AddChildBuilder<T, Node>> {
         self.modifier(mod: StandardModifiers.AddChildBuilder(body: value))
     }
     
