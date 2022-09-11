@@ -14,6 +14,11 @@ public struct Builder<T: ProcessorProtocol> {
     let nodeInit: NodeInit<T.Node>
     let processor: T
     
+    public init(_ nodeInit: NodeInit<T.Node>, processor: T) {
+        self.nodeInit = nodeInit
+        self.processor = processor
+    }
+    
     /// 定義されたビルダーからノードを生成します.
     ///
     /// Node の型によらず, ノードの生成は `Node()` から開始されます.

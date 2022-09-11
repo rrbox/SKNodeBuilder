@@ -20,7 +20,7 @@ enum StandardParams<Node: SKNode>: NodeInitType {
 }
 
 /// ノードを遅延生成する構造体です.
-struct NodeInit<T: SKNode>: NodeMake {
+public struct NodeInit<T: SKNode>: NodeMake {
     typealias InitType = StandardParams<T>
     
     let param: InitType
@@ -38,19 +38,19 @@ struct NodeInit<T: SKNode>: NodeMake {
         }
     }
     
-    init() {
+    public init() {
         self.param = .none
     }
     
-    init(coder aDecoder: NSCoder) {
+    public init(coder aDecoder: NSCoder) {
         self.param = .coder(aDecoder)
     }
     
-    init(fileNamed fileName: String) {
+    public init(fileNamed fileName: String) {
         self.param = .fileNamed(fileName)
     }
     
-    init(fileNamed fileName: String, securelyWithClasses classes: Set<AnyHashable>) {
+    public init(fileNamed fileName: String, securelyWithClasses classes: Set<AnyHashable>) {
         self.param = .securelyWithClasses(fileName, classes)
     }
 }
