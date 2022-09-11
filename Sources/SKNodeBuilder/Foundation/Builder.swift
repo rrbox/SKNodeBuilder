@@ -18,7 +18,7 @@ public struct Builder<T: ProcessorProtocol> {
     ///
     /// Node の型によらず, ノードの生成は `Node()` から開始されます.
     public func node() -> T.Node {
-        let result = T.Node()
+        let result = self.nodeInit.make()
         self.processor.mod(node: result)
         return result
     }
