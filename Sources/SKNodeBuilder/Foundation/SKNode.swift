@@ -81,9 +81,9 @@ public enum StandardModifiers {
         }
     }
     
-    /// ``doc:SKNodeBuilder/BuilderProtocol/addChild(builder:)`` を行うためのモディフィアです.
+    /// ``doc:SKNodeBuilder/ProcessorProtocol/addChild(builder:)`` を行うためのモディフィアです.
     /// ビルダーオブジェクトから `node()` メソッドにより生成さたノードを子ノードとして追加します.
-    public struct AddChildBuilder<T: BuilderProtocol, Node: SKNode>: Modifier {
+    public struct AddChildBuilder<T: ProcessorProtocol, Node: SKNode>: Modifier {
         var body: T
         
         public func mod(node: Node) {
@@ -91,10 +91,10 @@ public enum StandardModifiers {
         }
     }
     
-    ///  ``doc:SKNodeBuilder/BuilderProtocol/addChild(_:withNode:)``を行うためのモディフィアです.
+    ///  ``doc:SKNodeBuilder/ProcessorProtocol/addChild(_:withNode:)``を行うためのモディフィアです.
     ///
     /// ビルダーオブジェクトから `process(node:)` メソッドで編集されたノードを子ノードとして追加します.
-    public struct AddChildWithNode<T: BuilderProtocol, Node: SKNode>: Modifier {
+    public struct AddChildWithNode<T: ProcessorProtocol, Node: SKNode>: Modifier {
         var body: T
         unowned let childNode: T.Node
         
@@ -104,7 +104,7 @@ public enum StandardModifiers {
         }
     }
     
-    /// ``doc:SKNodeBuilder/BuilderProtocol/addChild(_:)`` を行うためのモディフィアです.
+    /// ``doc:SKNodeBuilder/ProcessorProtocol/addChild(_:)`` を行うためのモディフィアです.
     ///
     /// ノードをそのまま子ノードとして追加します.
     public struct AddChild<T: SKNode, Node: SKNode>: Modifier {
@@ -119,7 +119,7 @@ public enum StandardModifiers {
 
 }
 
-public extension BuilderProtocol {
+public extension ProcessorProtocol {
     /// 座標を変更します.
     @discardableResult func position(_ value: CGPoint) -> Next<StandardModifiers.Position<Node>> {
         self.modifier(mod: StandardModifiers.Position(body: value))
@@ -163,7 +163,7 @@ public extension BuilderProtocol {
     /// 子ノードをビルダーで作成し, 追加します.
     ///
     /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChildBuilder) をラップしたメソッドです.
-    @discardableResult func addChild<T: BuilderProtocol>(builder value: T) -> Next<StandardModifiers.AddChildBuilder<T, Node>> {
+    @discardableResult func addChild<T: ProcessorProtocol>(builder value: T) -> Next<StandardModifiers.AddChildBuilder<T, Node>> {
         self.modifier(mod: StandardModifiers.AddChildBuilder(body: value))
     }
     
@@ -171,8 +171,8 @@ public extension BuilderProtocol {
     ///
     /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChildWithNode) をラップしたメソッドです.
     /// - attention: `process(node:)` など, 編集フローとしてビルダーを使用する場合, 子ノードの取り合いが発生することがあります.
-    /// - attention: 引数に `SKSpriteNode(color:, size:)` のように直接インスタンス化して参照をセットすると, エラーが起こります. これはModifier が参照を unowned で所持するためです. 直接インスタンス化したい場合は `addChild<T: BuilderProtocol>(_ : T)` を使ってください.
-    @discardableResult func addChild<T: BuilderProtocol>(_ value: T, withNode node: T.Node) -> Next<StandardModifiers.AddChildWithNode<T, Node>> {
+    /// - attention: 引数に `SKSpriteNode(color:, size:)` のように直接インスタンス化して参照をセットすると, エラーが起こります. これはModifier が参照を unowned で所持するためです. 直接インスタンス化したい場合は `addChild<T: ProcessorProtocol>(_ : T)` を使ってください.
+    @discardableResult func addChild<T: ProcessorProtocol>(_ value: T, withNode node: T.Node) -> Next<StandardModifiers.AddChildWithNode<T, Node>> {
         self.modifier(mod: StandardModifiers.AddChildWithNode(body: value, childNode: node))
     }
     
@@ -180,7 +180,7 @@ public extension BuilderProtocol {
     ///
     /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChild) をラップしたメソッドです.
     /// - attention: `process(node:)` など, 編集フローとしてビルダーを使用する場合, 子ノードの取り合いが発生することがあります.
-    /// - attention: 引数に `SKSpriteNode(color:, size:)` のように直接インスタンス化して参照をセットすると, エラーが起こります. これはModifier が参照を unowned で所持するためです. 直接インスタンス化したい場合は `addChild<T: BuilderProtocol>(_ : T)` を使ってください.
+    /// - attention: 引数に `SKSpriteNode(color:, size:)` のように直接インスタンス化して参照をセットすると, エラーが起こります. これはModifier が参照を unowned で所持するためです. 直接インスタンス化したい場合は `addChild<T: ProcessorProtocol>(_ : T)` を使ってください.
     @discardableResult func addChild<T: SKNode>(_ value: T) -> Next<StandardModifiers.AddChild<T, Node>> {
         self.modifier(mod: StandardModifiers.AddChild(body: value))
     }

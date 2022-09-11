@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public typealias SpriteBuilder = Builder<SKSpriteNode>
+public typealias SpriteProcessor = Processor<SKSpriteNode>
 
 /// Name space of SKSpriteNode builder's modifiers.
 public enum SpriteModifiers {
@@ -120,7 +120,7 @@ public enum SpriteModifiers {
     
 }
 
-public extension BuilderProtocol where Node == SKSpriteNode {
+public extension ProcessorProtocol where Node == SKSpriteNode {
     @discardableResult func texture(_ value: SKTexture) -> Next<SpriteModifiers.Texture> {
         self.modifier(mod: SpriteModifiers.Texture(body: value))
     }
