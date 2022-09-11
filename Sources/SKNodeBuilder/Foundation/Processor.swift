@@ -31,15 +31,6 @@ public extension ProcessorProtocol {
     typealias Next<T: Modifier> = Link<Self, T> where T.Node == Self.Node
     typealias Node = Self.Mod.Node
     
-    /// 定義されたビルダーからノードを生成します.
-    ///
-    /// Node の型によらず, ノードの生成は `Node()` から開始されます.
-    func node() -> Node {
-        let node = Mod.Node()
-        self.mod(node: node)
-        return node
-    }
-    
     /// ビルダーで定義されたプロセスを任意のノードに対して実行します.
     func process(node: Self.Mod.Node) -> Self.Mod.Node {
         self.mod(node: node)
