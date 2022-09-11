@@ -7,6 +7,7 @@
 
 import SpriteKit
 
+/// ビルダーの起点となる構造体です.
 public struct Builder<T: ProcessorProtocol> {
     public typealias Next<Mod: Modifier> = Builder<Link<T, Mod>> where Mod.Node == T.Node
     
