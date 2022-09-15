@@ -28,7 +28,7 @@ public protocol BuilderProtocol {
 }
 
 public extension BuilderProtocol {
-    typealias Next<T: Modifier> = Link<Self, T> where T.Node == Self.Node
+    typealias Next<T: Modifier> = Link<Self, T> where T.Node == Self.Mod.Node
     typealias Node = Self.Mod.Node
     
     /// 定義されたビルダーからノードを生成します.
