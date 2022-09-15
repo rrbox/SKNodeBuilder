@@ -28,7 +28,7 @@ public protocol ProcessorProtocol {
 }
 
 public extension ProcessorProtocol {
-    typealias Next<T: Modifier> = Link<Self, T> where T.Node == Self.Node
+    typealias Next<T: Modifier> = Link<Self, T> where T.Node == Self.Mod.Node
     typealias Node = Self.Mod.Node
     
     /// ビルダーで定義されたプロセスを任意のノードに対して実行します.
