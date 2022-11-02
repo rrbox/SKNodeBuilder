@@ -41,7 +41,7 @@ public extension SpriteBuilder {
     
 }
 
-public extension BuilderProtocol where Body == SKSpriteNode {
+public extension BuilderProtocol where Body: SKSpriteNode {
     
     @discardableResult func texture(_ texture: SKTexture?) -> Self {
         self.node.texture = texture
