@@ -23,8 +23,14 @@ class ShapeNode: SKShapeNode {
 
 final class SubclassTests: XCTestCase {
     func testSubclass() {
-        let builder = Builder<SpriteNode>()
+        _ = Builder<SpriteNode>()
             .size(CGSize(width: 32, height: 32))
+        
+        _ = Builder<ShapeNode>()
+            .fillColor(.red)
+        
+        _ = Builder<LabelNode>()
+            .text("test")
     }
-
+    
 }
