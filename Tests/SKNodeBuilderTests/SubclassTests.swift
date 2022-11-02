@@ -13,6 +13,10 @@ class SpriteNode: SKSpriteNode {
     
 }
 
+class LabelNode: SKLabelNode {
+    
+}
+
 final class SubclassTets: XCTestCase {
     
     func testSubclassNode() {
@@ -21,6 +25,11 @@ final class SubclassTets: XCTestCase {
             processor: Processor<SpriteNode>()
                 .size(CGSize(width: 32, height: 32))
         )
+        
+        _ = Builder(
+            .init(),
+            processor: Processor<LabelNode>()
+                .text("test"))
     }
     
 }
