@@ -1,5 +1,5 @@
 //
-//  NodeMake.swift
+//  NodeInit.swift
 //  
 //
 //  Created by rrbox on 2022/09/08.
@@ -22,6 +22,7 @@ enum StandardParams<Node: SKNode>: NodeInitType {
 
 /// ノードを遅延生成する構造体です.
 public struct NodeInit<T: SKNode>: NodeMake {
+    
     typealias InitType = StandardParams<T>
     
     let param: InitType
@@ -54,4 +55,5 @@ public struct NodeInit<T: SKNode>: NodeMake {
     public init(fileNamed fileName: String, securelyWithClasses classes: Set<AnyHashable>) {
         self.param = .securelyWithClasses(fileName, classes)
     }
+    
 }

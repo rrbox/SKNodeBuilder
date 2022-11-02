@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Builder.swift
 //  
 //
 //  Created by rrbox on 2022/09/09.
@@ -9,6 +9,7 @@ import SpriteKit
 
 /// ビルダーの起点となる構造体です.
 public struct Builder<T: ProcessorProtocol> {
+    
     let nodeInit: NodeInit<T.Node>
     let processor: T
     
