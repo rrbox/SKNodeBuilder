@@ -25,7 +25,7 @@ public extension LabelBuilder {
     
 }
 
-public extension BuilderProtocol where Body == SKLabelNode {
+public extension BuilderProtocol where Body: SKLabelNode {
     
     @discardableResult func text(_ value: String?) -> Self {
         self.node.text = value

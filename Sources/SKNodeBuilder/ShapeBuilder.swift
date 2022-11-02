@@ -57,7 +57,7 @@ public extension ShapeBuilder {
     
 }
 
-public extension BuilderProtocol where Body == SKShapeNode {
+public extension BuilderProtocol where Body: SKShapeNode {
     
     func path(_ value: CGPath) -> Self {
         self.node.path = value
