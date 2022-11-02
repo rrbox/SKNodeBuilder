@@ -11,131 +11,161 @@ public typealias ShapeProcessor<Node: SKShapeNode> = Processor<Node>
 
 /// Name space of SKShapeNode builder's modifiers.
 public enum ShapeModifiers {
+    
     public struct Path<Node: SKShapeNode>: Modifier {
+        
         var body: CGPath?
         
         public func mod(node: Node) {
             node.path = self.body
         }
+        
     }
     
     public struct FillColor<Node: SKShapeNode>: Modifier {
+        
         var body: SKColor
         
         public func mod(node: Node) {
             node.fillColor = self.body
         }
+        
     }
     
     public struct FillTexture<Node: SKShapeNode>: Modifier {
+        
         var body: SKTexture?
         
         public func mod(node: Node) {
             node.fillTexture = self.body
         }
+        
     }
 
     public struct LineWidth<Node: SKShapeNode>: Modifier {
+        
         var body: CGFloat
         
         public func mod(node: Node) {
             node.lineWidth = self.body
         }
+        
     }
     
     public struct StrokeColor<Node: SKShapeNode>: Modifier {
+        
         var body: SKColor
         
         public func mod(node: Node) {
             node.strokeColor = self.body
         }
+        
     }
 
     public struct StrokeTexture<Node: SKShapeNode>: Modifier {
+        
         var body: SKTexture?
         
         public func mod(node: Node) {
             node.strokeTexture = self.body
         }
+        
     }
 
     public struct GlowWidth<Node: SKShapeNode>: Modifier {
+        
         var body: CGFloat
         
         public func mod(node: Node) {
             node.glowWidth = self.body
         }
+        
     }
 
     public struct LineCap<Node: SKShapeNode>: Modifier {
+        
         var body: CGLineCap
         
         public func mod(node: Node) {
             node.lineCap = self.body
         }
+        
     }
 
     public struct LineJoin<Node: SKShapeNode>: Modifier {
+        
         var body: CGLineJoin
         
         public func mod(node: Node) {
             node.lineJoin = self.body
         }
+        
     }
 
     public struct MiterLimit<Node: SKShapeNode>: Modifier {
+        
         var body: CGFloat
         
         public func mod(node: Node) {
             node.miterLimit = self.body
         }
+        
     }
     
     public struct IsAntialiased<Node: SKShapeNode>: Modifier {
+        
         var body: Bool
         
         public func mod(node: Node) {
             node.isAntialiased = self.body
         }
+        
     }
 
     public struct BlendMode<Node: SKShapeNode>: Modifier {
+        
         var body: SKBlendMode
         
         public func mod(node: Node) {
             node.blendMode = self.body
         }
+        
     }
     
     public struct StrokeShader<Node: SKShapeNode>: Modifier {
+        
         var body: SKShader?
         
         public func mod(node: Node) {
             node.strokeShader = self.body
         }
+        
     }
 
     public struct FillShader<Node: SKShapeNode>: Modifier {
+        
         var body: SKShader?
         
         public func mod(node: Node) {
             node.fillShader = self.body
         }
+        
     }
     
     public struct AttributeValues<Node: SKShapeNode>: Modifier {
+        
         var body: [String: SKAttributeValue]
         
         public func mod(node: Node) {
             node.attributeValues = self.body
         }
+        
     }
-
-
-
+    
 }
 
 public extension ProcessorProtocol where Node: SKShapeNode {
+    
     @discardableResult func path(_ value: CGPath?) -> Next<ShapeModifiers.Path<Node>> {
         self.modifier(mod: ShapeModifiers.Path(body: value))
     }

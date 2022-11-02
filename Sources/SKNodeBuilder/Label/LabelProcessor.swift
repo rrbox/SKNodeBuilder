@@ -11,113 +11,141 @@ public typealias LabelProcessor<Node: SKLabelNode> = Processor<Node>
 
 /// Name space of SKLabelNode builder's modifiers.
 public enum LabelModifiers {
+    
     public struct Text<Node: SKLabelNode>: Modifier {
+        
         var body: String?
         
         public func mod(node: Node) {
             node.text = self.body
         }
+        
     }
 
     public struct AttributedText<Node: SKLabelNode>: Modifier {
+        
         var body: NSAttributedString
         
         public func mod(node: Node) {
             node.attributedText = self.body
         }
+        
     }
 
     public struct FontColor<Node: SKLabelNode>: Modifier {
+        
         var body: SKColor?
         
         public func mod(node: Node) {
             node.fontColor = self.body
         }
+        
     }
 
     public struct FontName<Node: SKLabelNode>: Modifier {
+        
         var body: String?
         
         public func mod(node: Node) {
             node.fontName = self.body
         }
+        
     }
 
     public struct FontSize<Node: SKLabelNode>: Modifier {
+        
         var body: CGFloat
         
         public func mod(node: Node) {
             node.fontSize = self.body
         }
+        
     }
 
     public struct VerticalAlignment<Node: SKLabelNode>: Modifier {
+        
         var body: SKLabelVerticalAlignmentMode
         
         public func mod(node: Node) {
             node.verticalAlignmentMode = self.body
         }
+        
     }
 
     public struct HorizontalAlignment<Node: SKLabelNode>: Modifier {
+        
         var body: SKLabelHorizontalAlignmentMode
         
         public func mod(node: Node) {
             node.horizontalAlignmentMode = self.body
         }
+        
     }
 
     public struct PreferredMaxLayoutWidth<Node: SKLabelNode>: Modifier {
+        
         var body: CGFloat
         
         public func mod(node: Node) {
             node.preferredMaxLayoutWidth = self.body
         }
+        
     }
 
     public struct LineBreakMode<Node: SKLabelNode>: Modifier {
+        
         var body: NSLineBreakMode
         
         public func mod(node: Node) {
             node.lineBreakMode = self.body
         }
+        
     }
 
     public struct NumberOfLines<Node: SKLabelNode>: Modifier {
+        
         var body: Int
         
         public func mod(node: Node) {
             node.numberOfLines = self.body
         }
+        
     }
 
     public struct Color<Node: SKLabelNode>: Modifier {
+        
         var body: SKColor
         
         public func mod(node: Node) {
             node.color = self.body
         }
+        
     }
 
     public struct ColorBlendFactor<Node: SKLabelNode>: Modifier {
+        
         var body: CGFloat
         
         public func mod(node: Node) {
             node.colorBlendFactor = self.body
         }
+        
     }
 
     public struct BlendMode<Node: SKLabelNode>: Modifier {
+        
         var body: SKBlendMode
         
         public func mod(node: Node) {
             node.blendMode = self.body
         }
+        
     }
 
 }
 
 public extension ProcessorProtocol where Node: SKLabelNode {
+    
     @discardableResult func text(_ value: String?) -> Next<LabelModifiers.Text<Node>> {
         self.modifier(mod: LabelModifiers.Text(body: value))
     }
