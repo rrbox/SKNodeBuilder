@@ -19,6 +19,7 @@ final class SubclassTets: XCTestCase {
         _ = Builder(
             .init(),
             processor: Processor<SpriteNode>()
+                .size(CGSize(width: 32, height: 32))
         )
     }
     
