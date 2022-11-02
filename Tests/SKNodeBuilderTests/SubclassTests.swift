@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import SKNodeBuilder
 import XCTest
 
 class SpriteNode: SKSpriteNode {
@@ -22,7 +23,8 @@ class ShapeNode: SKShapeNode {
 
 final class SubclassTests: XCTestCase {
     func testSubclass() {
-        
+        let builder = Builder<SpriteNode>()
+            .size(CGSize(width: 32, height: 32))
     }
 
 }
