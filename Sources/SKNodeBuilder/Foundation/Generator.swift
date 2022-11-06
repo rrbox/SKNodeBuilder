@@ -7,3 +7,18 @@
 
 import SpriteKit
 
+public protocol GeneratorProtocol {
+    associatedtype Node: SKNode
+}
+
+public protocol ThrowableNodeGenerator: GeneratorProtocol {
+    func node() throws -> Node
+}
+
+public protocol OptionalNodeGenerator: GeneratorProtocol {
+    func node() -> Node?
+}
+
+public protocol DefaultNodeGenerator: GeneratorProtocol {
+    func node() -> Node
+}
