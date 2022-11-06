@@ -100,14 +100,14 @@ public enum StandardModifiers {
     
     /// ``doc:SKNodeBuilder/ProcessorProtocol/addChild(builder:)`` を行うためのモディフィアです.
     /// ビルダーオブジェクトから `node()` メソッドにより生成さたノードを子ノードとして追加します.
-    public struct AddChildBuilder<T: ProcessorProtocol, Node: SKNode>: Modifier {
+    public struct AddChildBuilder<Generator: GeneratorProtocol, T: ProcessorProtocol, Node: SKNode> where Generator.Node == T.Mod.Node {
         
-        var body: Builder<T>
+        var body: Builder<Generator, T>
         
-        public func mod(node: Node) {
-            node.addChild(self.body.node())
-        }
-        
+//        public func mod(node: Node) {
+//            node.addChild(self.body.node())
+//        }
+//
     }
     
     ///  ``doc:SKNodeBuilder/ProcessorProtocol/addChild(_:withNode:)``を行うためのモディフィアです.
@@ -140,6 +140,12 @@ public enum StandardModifiers {
     }
 
 
+}
+
+extension StandardModifiers.AddChildBuilder: Modifier where Generator: DefaultNodeGenerator {
+    public func mod(node: Node) {
+        node.addChild(self.body.node())
+    }
 }
 
 public extension ProcessorProtocol {
@@ -187,7 +193,7 @@ public extension ProcessorProtocol {
     /// 子ノードをビルダーで作成し, 追加します.
     ///
     /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChildBuilder) をラップしたメソッドです.
-    @discardableResult func addChild<T: ProcessorProtocol>(builder value: Builder<T>) -> Next<StandardModifiers.AddChildBuilder<T, Node>> {
+    @discardableResult func addChild<Generator: GeneratorProtocol, T: ProcessorProtocol>(builder value: Builder<Generator, T>) -> Next<StandardModifiers.AddChildBuilder<Generator, T, Node>> where Generator: DefaultNodeGenerator {
         self.modifier(mod: StandardModifiers.AddChildBuilder(body: value))
     }
     
