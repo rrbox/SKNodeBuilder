@@ -9,7 +9,7 @@ final class SKNodeBuilderTests: XCTestCase {
         childNode.name = "sample_2"
         let childLabel = SKLabelNode(text: "sample label")
         
-        let node = Builder(.init(), processor: Processor<SKNode>()
+        let node = Builder(Generators.make(), processor: Processor<SKNode>()
             .position(CGPoint(x: 1, y: 0))
             .zPosition(1)
             .zRotation(1)
@@ -17,7 +17,7 @@ final class SKNodeBuilderTests: XCTestCase {
             .alpha(0.5)
             .name("test_node")
             .addChild(
-                builder: .init(.init(),
+                builder: .init(Generators.make(),
                                processor: Processor()
                     .name("sample_0")
                     .position(CGPoint(x: 32, y: 32))))
@@ -41,7 +41,7 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testSpriteBuilder() throws {
-        let node = Builder(.init(), processor: Processor<SKSpriteNode>()
+        let node = Builder(Generators.make(), processor: Processor<SKSpriteNode>()
             .size(CGSize(width: 32, height: 32))
             .anchorPoint(CGPoint(x: 1, y: 1))
             .centerRect(CGRect(x: 0, y: 0, width: 320, height: 320))
@@ -66,7 +66,7 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testLabelBuilder() throws {
-        let node = Builder(.init(), processor: Processor<SKLabelNode>()
+        let node = Builder(Generators.make(), processor: Processor<SKLabelNode>()
             .text("Sample")
             .fontColor(.green)
             .fontName("Times")
@@ -94,7 +94,7 @@ final class SKNodeBuilderTests: XCTestCase {
     }
     
     func testShapeBuilder() throws {
-        let node = Builder(.init(), processor: Processor<SKShapeNode>()
+        let node = Builder(Generators.make(), processor: Processor<SKShapeNode>()
             .path(CGPath(rect: CGRect(x: 0, y: 0, width: 32, height: 32), transform: nil))
             .fillColor(.red)
             .lineWidth(1)

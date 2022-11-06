@@ -21,13 +21,13 @@ final class SubclassTets: XCTestCase {
     
     func testSubclassNode() {
         _ = Builder(
-            .init(),
+            Generators.make(),
             processor: Processor<SpriteNode>()
                 .size(CGSize(width: 32, height: 32))
         )
         
         _ = Builder(
-            .init(),
+            Generators.make(),
             processor: Processor<LabelNode>()
                 .text("test"))
     }
