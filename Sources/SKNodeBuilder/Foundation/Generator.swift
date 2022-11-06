@@ -22,3 +22,6 @@ public protocol OptionalNodeGenerator: GeneratorProtocol {
 public protocol DefaultNodeGenerator: GeneratorProtocol {
     func node() -> Node
 }
+
+/// Generator を生成する関数をまとめる名前空間です.
+public enum Generators<Node: SKNode> {}
