@@ -9,6 +9,10 @@ import SpriteKit
 import SKNodeBuilder
 import XCTest
 
+class EmptyNode: SKNode {
+    
+}
+
 class SpriteNode: SKSpriteNode {
     
 }
@@ -22,6 +26,12 @@ class ShapeNode: SKShapeNode {
 }
 
 final class SubclassTets: XCTestCase {
+    
+    func testSKNodeSubclass() {
+        _ = Builder(
+            Generators.make(),
+            processor: Processor<EmptyNode>())
+    }
     
     func testSpriteSubclass() {
         _ = Builder(
