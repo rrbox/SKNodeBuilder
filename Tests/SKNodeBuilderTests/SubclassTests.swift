@@ -123,9 +123,31 @@ final class SubclassTets: XCTestCase {
     }
     
     func testShapeSubclass() {
-        _ = Builder(
+        let node = Builder(
             Generators.make(),
-            processor: Processor<ShapeNode>())
+            processor: Processor<ShapeNode>()
+                .path(CGPath(rect: CGRect(x: 0, y: 0, width: 32, height: 32), transform: nil))
+                .fillColor(.red)
+                .lineWidth(1)
+                .strokeColor(.green)
+                .glowWidth(2)
+                .lineCap(.round)
+                .lineJoin(.round)
+                .miterLimit(3)
+                .isAntialiased(false)
+                .blendMode(.add))
+                .node()
+            
+            XCTAssertEqual(node.path, CGPath(rect: CGRect(x: 0, y: 0, width: 32, height: 32), transform: nil))
+            XCTAssertEqual(node.fillColor, .red)
+            XCTAssertEqual(node.lineWidth, 1)
+            XCTAssertEqual(node.strokeColor, .green)
+            XCTAssertEqual(node.glowWidth, 2)
+            XCTAssertEqual(node.lineCap, .round)
+            XCTAssertEqual(node.lineJoin, .round)
+            XCTAssertEqual(node.miterLimit, 3)
+            XCTAssertEqual(node.isAntialiased, false)
+            XCTAssertEqual(node.blendMode, .add)
     }
     
 }
