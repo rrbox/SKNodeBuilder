@@ -147,55 +147,55 @@ public enum SpriteModifiers {
 
 public extension ProcessorProtocol where Node: SKSpriteNode {
     
-    @discardableResult func texture(_ value: SKTexture) -> Next<SpriteModifiers.Texture<Node>> {
+    func texture(_ value: SKTexture) -> Next<SpriteModifiers.Texture<Node>> {
         self.modifier(mod: SpriteModifiers.Texture(body: value))
     }
     
-    @discardableResult func size(_ value: CGSize) -> Next<SpriteModifiers.Size<Node>> {
+    func size(_ value: CGSize) -> Next<SpriteModifiers.Size<Node>> {
         self.modifier(mod: SpriteModifiers.Size(body: value))
     }
     
-    @discardableResult func anchorPoint(_ value: CGPoint) -> Next<SpriteModifiers.AnchorPoint<Node>> {
+    func anchorPoint(_ value: CGPoint) -> Next<SpriteModifiers.AnchorPoint<Node>> {
         self.modifier(mod: SpriteModifiers.AnchorPoint(body: value))
     }
     
-    @discardableResult func centerRect(_ value: CGRect) -> Next<SpriteModifiers.CenterRect<Node>> {
+    func centerRect(_ value: CGRect) -> Next<SpriteModifiers.CenterRect<Node>> {
         self.modifier(mod: SpriteModifiers.CenterRect(body: value))
     }
     
-    @discardableResult func color(_ value: SKColor) -> Next<SpriteModifiers.Color<Node>> {
+    func color(_ value: SKColor) -> Next<SpriteModifiers.Color<Node>> {
         self.modifier(mod: SpriteModifiers.Color(body: value))
     }
     
-    @discardableResult func colorBlendFactor(_ value: CGFloat) -> Next<SpriteModifiers.ColorBlendFactor<Node>> {
+    func colorBlendFactor(_ value: CGFloat) -> Next<SpriteModifiers.ColorBlendFactor<Node>> {
         self.modifier(mod: SpriteModifiers.ColorBlendFactor(body: value))
     }
     
-    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<SpriteModifiers.BlendMode<Node>> {
+    func blendMode(_ value: SKBlendMode) -> Next<SpriteModifiers.BlendMode<Node>> {
         self.modifier(mod: SpriteModifiers.BlendMode(body: value))
     }
     
-    @discardableResult func lightingBitMask(_ value: UInt32) -> Next<SpriteModifiers.LightingBitMask<Node>> {
+    func lightingBitMask(_ value: UInt32) -> Next<SpriteModifiers.LightingBitMask<Node>> {
         self.modifier(mod: SpriteModifiers.LightingBitMask(body: value))
     }
     
-    @discardableResult func shadowedBitMask(_ value: UInt32) -> Next<SpriteModifiers.ShadowedBitMask<Node>> {
+    func shadowedBitMask(_ value: UInt32) -> Next<SpriteModifiers.ShadowedBitMask<Node>> {
         self.modifier(mod: SpriteModifiers.ShadowedBitMask(body: value))
     }
     
-    @discardableResult func shadowCastBitMask(_ value: UInt32) -> Next<SpriteModifiers.ShadowCastBitMask<Node>> {
+    func shadowCastBitMask(_ value: UInt32) -> Next<SpriteModifiers.ShadowCastBitMask<Node>> {
         self.modifier(mod: SpriteModifiers.ShadowCastBitMask(body: value))
     }
     
-    @discardableResult func normalTexture(_ value: SKTexture?) -> Next<SpriteModifiers.NormalTexture<Node>> {
+    func normalTexture(_ value: SKTexture?) -> Next<SpriteModifiers.NormalTexture<Node>> {
         self.modifier(mod: SpriteModifiers.NormalTexture(body: value))
     }
     
-    @discardableResult func shader(_ value: SKShader?) -> Next<SpriteModifiers.Shader<Node>> {
+    func shader(_ value: SKShader?) -> Next<SpriteModifiers.Shader<Node>> {
         self.modifier(mod: SpriteModifiers.Shader(body: value))
     }
     
-    @discardableResult func setValue(_ value: SKAttributeValue, forAttribute key: String) -> Next<SpriteModifiers.SetValue<Node>> {
+    func setValue(_ value: SKAttributeValue, forAttribute key: String) -> Next<SpriteModifiers.SetValue<Node>> {
         self.modifier(mod: SpriteModifiers.SetValue(value: value, key: key))
     }
     
