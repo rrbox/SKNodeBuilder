@@ -92,10 +92,34 @@ final class SubclassTets: XCTestCase {
     }
     
     func testLabelSubclass() {
-        _ = Builder(
+        let node = Builder(
             Generators.make(),
             processor: Processor<LabelNode>()
-                .text("test"))
+                .text("Sample")
+                .fontColor(.green)
+                .fontName("Times")
+                .fontSize(100)
+                .verticalAlignment(.center)
+                .horizontalAlignment(.left)
+                .preferredMaxLayoutWidth(100)
+                .lineBreakMode(.byClipping)
+                .numberOfLines(95)
+                .color(.green))
+                .node()
+            
+            XCTAssertEqual(node.text, "Sample")
+            XCTAssertEqual(node.fontColor, SKColor.green)
+            XCTAssertEqual(node.fontName, "Times")
+            XCTAssertEqual(node.fontSize, 100)
+            XCTAssertEqual(node.verticalAlignmentMode, .center)
+            XCTAssertEqual(node.horizontalAlignmentMode, .left)
+            XCTAssertEqual(node.preferredMaxLayoutWidth, 100)
+            XCTAssertEqual(node.lineBreakMode, .byClipping)
+            XCTAssertEqual(node.numberOfLines, 95)
+    #if os(iOS)
+            XCTAssertEqual(node.color, .green)
+    #endif
+        
     }
     
     func testShapeSubclass() {
