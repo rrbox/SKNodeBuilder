@@ -17,19 +17,31 @@ class LabelNode: SKLabelNode {
     
 }
 
+class ShapeNode: SKShapeNode {
+    
+}
+
 final class SubclassTets: XCTestCase {
     
-    func testSubclassNode() {
+    func testSpriteSubclass() {
         _ = Builder(
             Generators.make(),
             processor: Processor<SpriteNode>()
                 .size(CGSize(width: 32, height: 32))
         )
-        
+    }
+    
+    func testLabelSubclass() {
         _ = Builder(
             Generators.make(),
             processor: Processor<LabelNode>()
                 .text("test"))
+    }
+    
+    func testShapeSubclass() {
+        _ = Builder(
+            Generators.make(),
+            processor: Processor<ShapeNode>())
     }
     
 }
