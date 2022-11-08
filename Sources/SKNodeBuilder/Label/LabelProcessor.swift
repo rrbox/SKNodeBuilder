@@ -146,55 +146,55 @@ public enum LabelModifiers {
 
 public extension ProcessorProtocol where Node: SKLabelNode {
     
-    @discardableResult func text(_ value: String?) -> Next<LabelModifiers.Text<Node>> {
+    func text(_ value: String?) -> Next<LabelModifiers.Text<Node>> {
         self.modifier(mod: LabelModifiers.Text(body: value))
     }
     
-    @discardableResult func attributedText(_ value: NSAttributedString) -> Next<LabelModifiers.AttributedText<Node>> {
+    func attributedText(_ value: NSAttributedString) -> Next<LabelModifiers.AttributedText<Node>> {
         self.modifier(mod: LabelModifiers.AttributedText(body: value))
     }
     
-    @discardableResult func fontColor(_ value: SKColor?) -> Next<LabelModifiers.FontColor<Node>> {
+    func fontColor(_ value: SKColor?) -> Next<LabelModifiers.FontColor<Node>> {
         self.modifier(mod: LabelModifiers.FontColor(body: value))
     }
     
-    @discardableResult func fontName(_ value: String?) -> Next<LabelModifiers.FontName<Node>> {
+    func fontName(_ value: String?) -> Next<LabelModifiers.FontName<Node>> {
         self.modifier(mod: LabelModifiers.FontName(body: value))
     }
     
-    @discardableResult func fontSize(_ value: CGFloat) -> Next<LabelModifiers.FontSize<Node>> {
+    func fontSize(_ value: CGFloat) -> Next<LabelModifiers.FontSize<Node>> {
         self.modifier(mod: LabelModifiers.FontSize(body: value))
     }
     
-    @discardableResult func verticalAlignment(_ value: SKLabelVerticalAlignmentMode) -> Next<LabelModifiers.VerticalAlignment<Node>> {
+    func verticalAlignment(_ value: SKLabelVerticalAlignmentMode) -> Next<LabelModifiers.VerticalAlignment<Node>> {
         self.modifier(mod: LabelModifiers.VerticalAlignment(body: value))
     }
     
-    @discardableResult func horizontalAlignment(_ value: SKLabelHorizontalAlignmentMode) -> Next<LabelModifiers.HorizontalAlignment<Node>> {
+    func horizontalAlignment(_ value: SKLabelHorizontalAlignmentMode) -> Next<LabelModifiers.HorizontalAlignment<Node>> {
         self.modifier(mod: LabelModifiers.HorizontalAlignment(body: value))
     }
     
-    @discardableResult func preferredMaxLayoutWidth(_ value: CGFloat) -> Next<LabelModifiers.PreferredMaxLayoutWidth<Node>> {
+    func preferredMaxLayoutWidth(_ value: CGFloat) -> Next<LabelModifiers.PreferredMaxLayoutWidth<Node>> {
         self.modifier(mod: LabelModifiers.PreferredMaxLayoutWidth(body: value))
     }
     
-    @discardableResult func lineBreakMode(_ value: NSLineBreakMode) -> Next<LabelModifiers.LineBreakMode<Node>> {
+    func lineBreakMode(_ value: NSLineBreakMode) -> Next<LabelModifiers.LineBreakMode<Node>> {
         self.modifier(mod: LabelModifiers.LineBreakMode(body: value))
     }
     
-    @discardableResult func numberOfLines(_ value: Int) -> Next<LabelModifiers.NumberOfLines<Node>> {
+    func numberOfLines(_ value: Int) -> Next<LabelModifiers.NumberOfLines<Node>> {
         self.modifier(mod: LabelModifiers.NumberOfLines(body: value))
     }
     
-    @discardableResult func color(_ value: SKColor) -> Next<LabelModifiers.Color<Node>> {
+    func color(_ value: SKColor) -> Next<LabelModifiers.Color<Node>> {
         self.modifier(mod: LabelModifiers.Color(body: value))
     }
     
-    @discardableResult func colorBlendFactor(_ value: CGFloat) -> Next<LabelModifiers.ColorBlendFactor<Node>> {
+    func colorBlendFactor(_ value: CGFloat) -> Next<LabelModifiers.ColorBlendFactor<Node>> {
         self.modifier(mod: LabelModifiers.ColorBlendFactor(body: value))
     }
     
-    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<LabelModifiers.BlendMode<Node>> {
+    func blendMode(_ value: SKBlendMode) -> Next<LabelModifiers.BlendMode<Node>> {
         self.modifier(mod: LabelModifiers.BlendMode(body: value))
     }
 

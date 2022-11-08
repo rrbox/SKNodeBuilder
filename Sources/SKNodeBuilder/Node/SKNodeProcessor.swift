@@ -151,49 +151,49 @@ extension StandardModifiers.AddChildBuilder: Modifier where Generator: DefaultNo
 public extension ProcessorProtocol {
     
     /// 座標を変更します.
-    @discardableResult func position(_ value: CGPoint) -> Next<StandardModifiers.Position<Node>> {
+    func position(_ value: CGPoint) -> Next<StandardModifiers.Position<Node>> {
         self.modifier(mod: StandardModifiers.Position(body: value))
     }
     
     /// スケールを変更します.
-    @discardableResult func setScale(_ value: CGFloat) -> Next<StandardModifiers.Scale<Node>> {
+    func setScale(_ value: CGFloat) -> Next<StandardModifiers.Scale<Node>> {
         self.modifier(mod: StandardModifiers.Scale(body: value))
     }
     
     /// x スケールを変更します.
-    @discardableResult func xScale(_ value: CGFloat) -> Next<StandardModifiers.XScale<Node>> {
+    func xScale(_ value: CGFloat) -> Next<StandardModifiers.XScale<Node>> {
         self.modifier(mod: StandardModifiers.XScale(body: value))
     }
     
     /// y スケールを変更します.
-    @discardableResult func yScale(_ value: CGFloat) -> Next<StandardModifiers.YScale<Node>> {
+    func yScale(_ value: CGFloat) -> Next<StandardModifiers.YScale<Node>> {
         self.modifier(mod: StandardModifiers.YScale(body: value))
     }
     
     /// zPosition を変更します.
-    @discardableResult func zPosition(_ value: CGFloat) -> Next<StandardModifiers.ZPosition<Node>> {
+    func zPosition(_ value: CGFloat) -> Next<StandardModifiers.ZPosition<Node>> {
         self.modifier(mod: StandardModifiers.ZPosition(body: value))
     }
     
     /// zRotation を変更します.
-    @discardableResult func zRotation(_ value: CGFloat) -> Next<StandardModifiers.ZRotation<Node>> {
+    func zRotation(_ value: CGFloat) -> Next<StandardModifiers.ZRotation<Node>> {
         self.modifier(mod: StandardModifiers.ZRotation(body: value))
     }
     
     /// alpha を変更します.
-    @discardableResult func alpha(_ value: CGFloat) -> Next<StandardModifiers.Alpha<Node>> {
+    func alpha(_ value: CGFloat) -> Next<StandardModifiers.Alpha<Node>> {
         self.modifier(mod: StandardModifiers.Alpha(body: value))
     }
     
     /// name を変更します.
-    @discardableResult func name(_ value: String?) -> Next<StandardModifiers.Name<Node>> {
+    func name(_ value: String?) -> Next<StandardModifiers.Name<Node>> {
         self.modifier(mod: StandardModifiers.Name(body: value))
     }
     
     /// 子ノードをビルダーで作成し, 追加します.
     ///
     /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChildBuilder) をラップしたメソッドです.
-    @discardableResult func addChild<Generator: GeneratorProtocol, T: ProcessorProtocol>(builder value: Builder<Generator, T>) -> Next<StandardModifiers.AddChildBuilder<Generator, T, Node>> where Generator: DefaultNodeGenerator {
+    func addChild<Generator: GeneratorProtocol, T: ProcessorProtocol>(builder value: Builder<Generator, T>) -> Next<StandardModifiers.AddChildBuilder<Generator, T, Node>> where Generator: DefaultNodeGenerator {
         self.modifier(mod: StandardModifiers.AddChildBuilder(body: value))
     }
     
@@ -202,7 +202,7 @@ public extension ProcessorProtocol {
     /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChildWithNode) をラップしたメソッドです.
     /// - attention: `process(node:)` など, 編集フローとしてビルダーを使用する場合, 子ノードの取り合いが発生することがあります.
     /// - attention: 引数に `SKSpriteNode(color:, size:)` のように直接インスタンス化して参照をセットすると, エラーが起こります. これはModifier が参照を unowned で所持するためです. 直接インスタンス化したい場合は `addChild<T: ProcessorProtocol>(_ : T)` を使ってください.
-    @discardableResult func addChild<T: ProcessorProtocol>(_ value: T, withNode node: T.Node) -> Next<StandardModifiers.AddChildWithNode<T, Node>> {
+    func addChild<T: ProcessorProtocol>(_ value: T, withNode node: T.Node) -> Next<StandardModifiers.AddChildWithNode<T, Node>> {
         self.modifier(mod: StandardModifiers.AddChildWithNode(body: value, childNode: node))
     }
     
@@ -211,7 +211,7 @@ public extension ProcessorProtocol {
     /// [Modifier](doc:SKNodeBuilder/StandardModifiers/AddChild) をラップしたメソッドです.
     /// - attention: `process(node:)` など, 編集フローとしてビルダーを使用する場合, 子ノードの取り合いが発生することがあります.
     /// - attention: 引数に `SKSpriteNode(color:, size:)` のように直接インスタンス化して参照をセットすると, エラーが起こります. これはModifier が参照を unowned で所持するためです. 直接インスタンス化したい場合は `addChild<T: ProcessorProtocol>(_ : T)` を使ってください.
-    @discardableResult func addChild<T: SKNode>(_ value: T) -> Next<StandardModifiers.AddChild<T, Node>> {
+    func addChild<T: SKNode>(_ value: T) -> Next<StandardModifiers.AddChild<T, Node>> {
         self.modifier(mod: StandardModifiers.AddChild(body: value))
     }
     

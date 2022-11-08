@@ -166,63 +166,63 @@ public enum ShapeModifiers {
 
 public extension ProcessorProtocol where Node: SKShapeNode {
     
-    @discardableResult func path(_ value: CGPath?) -> Next<ShapeModifiers.Path<Node>> {
+    func path(_ value: CGPath?) -> Next<ShapeModifiers.Path<Node>> {
         self.modifier(mod: ShapeModifiers.Path(body: value))
     }
     
-    @discardableResult func fillColor(_ value: SKColor) -> Next<ShapeModifiers.FillColor<Node>> {
+    func fillColor(_ value: SKColor) -> Next<ShapeModifiers.FillColor<Node>> {
         self.modifier(mod: ShapeModifiers.FillColor(body: value))
     }
     
-    @discardableResult func fillTexture(_ value: SKTexture?) -> Next<ShapeModifiers.FillTexture<Node>> {
+    func fillTexture(_ value: SKTexture?) -> Next<ShapeModifiers.FillTexture<Node>> {
         self.modifier(mod: ShapeModifiers.FillTexture(body: value))
     }
     
-    @discardableResult func lineWidth(_ value: CGFloat) -> Next<ShapeModifiers.LineWidth<Node>> {
+    func lineWidth(_ value: CGFloat) -> Next<ShapeModifiers.LineWidth<Node>> {
         self.modifier(mod: ShapeModifiers.LineWidth(body: value))
     }
     
-    @discardableResult func strokeColor(_ value: SKColor) -> Next<ShapeModifiers.StrokeColor<Node>> {
+    func strokeColor(_ value: SKColor) -> Next<ShapeModifiers.StrokeColor<Node>> {
         self.modifier(mod: ShapeModifiers.StrokeColor(body: value))
     }
     
-    @discardableResult func strokeTexture(_ value: SKTexture?) -> Next<ShapeModifiers.StrokeTexture<Node>> {
+    func strokeTexture(_ value: SKTexture?) -> Next<ShapeModifiers.StrokeTexture<Node>> {
         self.modifier(mod: ShapeModifiers.StrokeTexture(body: value))
     }
     
-    @discardableResult func glowWidth(_ value: CGFloat) -> Next<ShapeModifiers.GlowWidth<Node>> {
+    func glowWidth(_ value: CGFloat) -> Next<ShapeModifiers.GlowWidth<Node>> {
         self.modifier(mod: ShapeModifiers.GlowWidth(body: value))
     }
     
-    @discardableResult func lineCap(_ value: CGLineCap) -> Next<ShapeModifiers.LineCap<Node>> {
+    func lineCap(_ value: CGLineCap) -> Next<ShapeModifiers.LineCap<Node>> {
         self.modifier(mod: ShapeModifiers.LineCap(body: value))
     }
     
-    @discardableResult func lineJoin(_ value: CGLineJoin) -> Next<ShapeModifiers.LineJoin<Node>> {
+    func lineJoin(_ value: CGLineJoin) -> Next<ShapeModifiers.LineJoin<Node>> {
         self.modifier(mod: ShapeModifiers.LineJoin(body: value))
     }
     
-    @discardableResult func miterLimit(_ value: CGFloat) -> Next<ShapeModifiers.MiterLimit<Node>> {
+    func miterLimit(_ value: CGFloat) -> Next<ShapeModifiers.MiterLimit<Node>> {
         self.modifier(mod: ShapeModifiers.MiterLimit(body: value))
     }
     
-    @discardableResult func isAntialiased(_ value: Bool) -> Next<ShapeModifiers.IsAntialiased<Node>> {
+    func isAntialiased(_ value: Bool) -> Next<ShapeModifiers.IsAntialiased<Node>> {
         self.modifier(mod: ShapeModifiers.IsAntialiased(body: value))
     }
     
-    @discardableResult func blendMode(_ value: SKBlendMode) -> Next<ShapeModifiers.BlendMode<Node>> {
+    func blendMode(_ value: SKBlendMode) -> Next<ShapeModifiers.BlendMode<Node>> {
         self.modifier(mod: ShapeModifiers.BlendMode(body: value))
     }
     
-    @discardableResult func strokeShader(_ value: SKShader?) -> Next<ShapeModifiers.StrokeShader<Node>> {
+    func strokeShader(_ value: SKShader?) -> Next<ShapeModifiers.StrokeShader<Node>> {
         self.modifier(mod: ShapeModifiers.StrokeShader(body: value))
     }
     
-    @discardableResult func fillShader(_ value: SKShader?) -> Next<ShapeModifiers.FillShader<Node>> {
+    func fillShader(_ value: SKShader?) -> Next<ShapeModifiers.FillShader<Node>> {
         self.modifier(mod: ShapeModifiers.FillShader(body: value))
     }
     
-    @discardableResult func attributeValues(_ value: [String: SKAttributeValue]) -> Next<ShapeModifiers.AttributeValues<Node>> {
+    func attributeValues(_ value: [String: SKAttributeValue]) -> Next<ShapeModifiers.AttributeValues<Node>> {
         self.modifier(mod: ShapeModifiers.AttributeValues(body: value))
     }
     
