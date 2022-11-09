@@ -6,3 +6,11 @@
 //
 
 import SpriteKit
+
+public enum LabelGenerators {
+    
+}
+
+public extension Generators where Node: SKLabelNode {
+    
+}
