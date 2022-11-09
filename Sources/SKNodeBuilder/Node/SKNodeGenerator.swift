@@ -28,7 +28,7 @@ public enum SKNodeGenerators {
         }
     }
     
-    public struct T<Node: SKNode>: ThrowableNodeGenerator {
+    public struct SecurelyWithClasses<Node: SKNode>: ThrowableNodeGenerator {
         let fileName: String
         let classes: Set<AnyHashable>
         
@@ -50,6 +50,10 @@ public extension Generators {
     
     static func make() -> SKNodeGenerators.Empty<Node> {
         SKNodeGenerators.Empty<Node>()
+    }
+    
+    static func make(fileNamed filename: String, securelyWithClasses classes: Set<AnyHashable>) -> SKNodeGenerators.SecurelyWithClasses<Node> {
+        SKNodeGenerators.SecurelyWithClasses(fileName: filename, classes: classes)
     }
     
 }
