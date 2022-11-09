@@ -6,3 +6,11 @@
 //
 
 import SpriteKit
+
+public enum ShapeGenerators {
+    
+}
+
+public extension Generators where Node: SKShapeNode {
+    
+}
