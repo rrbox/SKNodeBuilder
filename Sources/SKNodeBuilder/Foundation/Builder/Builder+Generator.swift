@@ -1,5 +1,5 @@
 //
-//  Builder+Genrator.swift
+//  Builder+Generator.swift
 //  
 //
 //  Created by rrbox on 2022/11/09.
