@@ -14,3 +14,11 @@ public struct Blank<Node: SKNode>: GeneratorProtocol, ProcessorProtocol {
     public func mod(node: Node) {}
     
 }
+
+public extension Builder {
+    init<Node: SKNode>(nodeType: Node.Type) where Generator == Blank<Node>, T == Blank<Node> {
+        self.processor = Blank<Node>(modData: .init())
+        self.generator = Blank<Node>(modData: .init())
+    }
+}
+
