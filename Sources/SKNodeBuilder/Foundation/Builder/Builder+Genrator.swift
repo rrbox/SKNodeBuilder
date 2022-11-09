@@ -31,4 +31,3 @@ public extension Builder where Generator: DefaultNodeGenerator {
     }
     
 }
-
