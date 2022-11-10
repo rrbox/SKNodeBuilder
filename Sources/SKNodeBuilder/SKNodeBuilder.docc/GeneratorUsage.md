@@ -1,2 +1,2 @@
-#  Generator の使い方
+# Generator の使い方
 

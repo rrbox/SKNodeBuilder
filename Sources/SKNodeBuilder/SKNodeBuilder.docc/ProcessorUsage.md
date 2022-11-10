@@ -1,2 +1,2 @@
-#  Processor の使い方
+# Processor の使い方
 

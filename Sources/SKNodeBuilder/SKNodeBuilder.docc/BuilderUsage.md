@@ -1,2 +1,2 @@
-#  Builder の作成と使い方
+# Builder の作成と使い方
 
