@@ -10,24 +10,21 @@ SKNode をビルダーパターンで作成するパッケージです.
 
 ### Create Builder
 
-- ``Builder``
 - <doc:BuilderUsage>
+- ``Builder``
 
 ### Generate SKNode
 
-- ``Generators``
 - <doc:GeneratorUsage>
-- ``SKNodeGenerators``
-- ``SpriteGenerators``
-- ``LabelGenerators``
-- ``ShapeGenerators``
+- ``Generators``
 
 ### Edit SKNode
 
-- ``Processor``
 - <doc:ProcessorUsage>
+- ``Processor``
 - ``ProcessorProtocol``
 
 ### Create custom modifier
 
 - <doc:ModiferCreate>
+- ``Modifier``
