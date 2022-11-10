@@ -24,3 +24,11 @@ let builder = Builder(nodeType: SKNode.self)
         .modifier(mod:)
         .modifier(mod:))
 ```
+
+### Builder から SKNode インスタンスを生成する
+
+Builder に Generator が設定されている場合に限り, ``Builder/node()-3u308``, ``Builder/node()-7cyn3``, ``Builder/node()-1s515`` のいずれかを使えるようになります. SKNode のインスタンスはこれらのメソッドから生成できます.
+
+```swift
+let node = builder.node()
+```
