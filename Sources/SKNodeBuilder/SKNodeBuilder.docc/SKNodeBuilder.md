@@ -4,7 +4,7 @@ SKNode をビルダーパターンで作成するパッケージです.
 
 ## Overview
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
+SKNodeBuilder は, SpriteKit のノードインスタンスの生成をサポートします. SKNodeBuilder が提供している機能は, ノードインスタンスの生成をビルダーパターンにすることです.
 
 ## Topics
 
@@ -13,12 +13,12 @@ SKNode をビルダーパターンで作成するパッケージです.
 - <doc:BuilderUsage>
 - ``Builder``
 
-### Generate SKNode
+### Generate node
 
 - <doc:GeneratorUsage>
 - ``Generators``
 
-### Edit SKNode
+### Edit node
 
 - <doc:ProcessorUsage>
 - ``Processor``
