@@ -1,6 +1,20 @@
 # Processor の使い方
 
+SKNodeBuilder では, SKNode インスタンスの特徴を Processor で表現します. 
+
+## Overview
+
+SKNodeBuilder がサポートする主な機能は, SpriteKit のノードインスタンスの生成方法をビルダーパターンで表現することです. 製作者の rrbox は, この生成方法を大きく二つの工程に分けて考えています.
+
+1. ノードインスタンスの生成
+2. 生成したノードインスタンスの加工
+
+Processor は 2. 生成したノードインスタンスの加工 を表現します.
+
+
 ## Processor を作成する
+
+Processor は, 構造体を初期化し, そのままメソッドチェーンでモディファイアを追加することで作成します.
 
 ### Processor の初期化
 
