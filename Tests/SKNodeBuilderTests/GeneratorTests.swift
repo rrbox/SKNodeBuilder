@@ -5,31 +5,45 @@
 //  Created by rrbox on 2022/11/11.
 //
 
+import SpriteKit
+import SKNodeBuilder
 import XCTest
 
 final class GeneratorTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testSKNodeGenerator() {
+        var node = Generators.make(fileNamed: "sample").node()
+        XCTAssertNil(node)
+        
+        node = Generators.make().node()
+        XCTAssertNotNil(node)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testSKSpriteNodeGenerator() {
+        let node = Generators<SKSpriteNode>.make(color: .red, size: CGSize(width: 32, height: 32)).node()
+        XCTAssertEqual(NSColor.red.cgColor.components, node.color.cgColor.components)
+        XCTAssertEqual(node.size, CGSize(width: 32, height: 32))
+        
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testSKLabelNodeGenerator() {
+        var node = Generators<SKLabelNode>.make(text: "test_0").node()
+        XCTAssertEqual(node.text, "test_0")
+        
+        node = Generators<SKLabelNode>.make(fontNamed: "times").node()
+        XCTAssertEqual(node.fontName, "times")
+        
+        node = Generators<SKLabelNode>.make(attributedText: NSAttributedString(string: "test_1")).node()
+        XCTAssertEqual(node.attributedText, NSAttributedString(string: "test_1"))
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testSKShapeNodeGenerator() {
+        var node = Generators<SKShapeNode>.make().node()
+        XCTAssertNil(node.path)
+        
+        node = Generators<SKShapeNode>.make(path: .init(rect: CGRect(x: 0, y: 0, width: 10, height: 10), transform: nil)).node()
+        XCTAssertEqual(node.path!.boundingBox, CGRect(x: 0, y: 0, width: 10, height: 10))
+        
+        node = Generators<SKShapeNode>.make(rectOf: CGSize(width: 32, height: 32)).node()
+        XCTAssertEqual(node.path!.boundingBox, CGRect(x: -16, y: -16, width: 32, height: 32))
     }
-
 }
