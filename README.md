@@ -1,5 +1,8 @@
 # SKNodeBuilder
 
+[![GitHub issues](https://img.shields.io/github/issues/rrbox/SKNodeBuilder)](https://github.com/rrbox/SKNodeBuilder/issues)
+[![GitHub license](https://img.shields.io/github/license/rrbox/SKNodeBuilder)](https://github.com/rrbox/SKNodeBuilder/blob/main/LICENSE)
+
 2Dゲーム制作フレームワーク SpriteKit の SKNode を Builder パターンで設計できるようにする SwiftPM です。
 
 ## DEMO
