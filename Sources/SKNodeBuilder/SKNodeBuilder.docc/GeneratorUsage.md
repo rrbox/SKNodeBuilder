@@ -1,6 +1,6 @@
 # Generator の使い方
 
-Builder では, SKNode インスタンスをどのように初期化するのかを Generator で表現します. 
+SKNodeBuilder では, SKNode インスタンスをどのように初期化するのかを Generator で表現します. 
 
 ## Overview
 
@@ -9,7 +9,7 @@ SKNodeBuilder がサポートする主な機能は, SpriteKit のノードイン
 1. ノードインスタンスの生成
 2. 生成したノードインスタンスの加工
 
-Generator では 1. のノードインスタンスの生成を表現します.
+Generator は 1. ノードインスタンスの生成 を表現します.
 
 ## Generator を初期化する
 
