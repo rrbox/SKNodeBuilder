@@ -1,4 +1,4 @@
-# Builder の作成と使い方
+# Builder の使い方
 
 ## Builder を作成する
 
