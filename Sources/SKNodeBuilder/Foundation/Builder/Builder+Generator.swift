@@ -10,14 +10,17 @@ public extension Builder where Generator: OptionalNodeGenerator {
         guard let result = self.generator.node() else {
             return nil
         }
-        return self.processor.process(node: result)
+        self.processor.process(node: result)
+        return result
     }
     
 }
 
 public extension Builder where Generator: ThrowableNodeGenerator {
     func node() throws -> Generator.Node {
-        return self.processor.process(node: try self.generator.node())
+        let result = try self.generator.node()
+        self.processor.process(node: result)
+        return result
     }
     
 }
@@ -27,7 +30,9 @@ public extension Builder where Generator: DefaultNodeGenerator {
     ///
     /// Node の型によらず, ノードの生成は `Node()` から開始されます.
     func node() -> Generator.Node {
-        return self.processor.process(node: self.generator.node())
+        let result = self.generator.node()
+        self.processor.process(node: result)
+        return result
     }
     
 }

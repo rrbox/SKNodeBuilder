@@ -35,9 +35,8 @@ public extension ProcessorProtocol {
     typealias Node = Self.Mod.Node
     
     /// ビルダーで定義されたプロセスを任意のノードに対して実行します.
-    func process(node: Self.Mod.Node) -> Self.Mod.Node {
+    func process(node: Self.Mod.Node) {
         self.mod(node: node)
-        return node
     }
     
     /// モディファイアをプロセスに追加します.
