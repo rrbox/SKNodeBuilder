@@ -7,41 +7,41 @@
 ### Builder
 
 `Builder` オブジェクトをインスタンス化すると, イニシャライザに応じて内部に SKNode インスタンスが作成されます.
-``` Swift
-let rect = SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)
-Builder<SKNode>()
-    .position(CGPoint(x: 32, y: 100)) // 座標を設定
-    .add(// 子ノードを追加(既に変数に保持されている場合)
-        child: rect,
-        build: { builder in
-            builder
-                .position(CGPoint(x: 0, y: 32)) // 子ノードの座標を設定
-        }
+
+```swift
+let node = Builder(nodeType: SKNode.self)
+    .setGenerator(Generators<SKNode>.make(fileNamed: "YourNode"))
+    .setProcessor(Processor<SKNode>()
+        .position(CGPoint(x: 32, y: 32)) // 座標をセットします
+        .alpha(0.5)                      // alpha 値をセットします
     )
-    .add(// 子ノードを追加
-        child: Builder<SKLabelNode>(text: "Rect")
-            .vertivalAlignment(.center)
-            .horizontalAlignment(.center)
-            .fontColor(.black)
-            .position(x: -32, y: -32)
-    )
+    .node()                              // ビルダーからノードを生成します.
 ```
 
-### NodeBuilder
+### Processor
 
-`Builder` の機能をアトリビュートで実装できます。
-``` Swift
-@NodeBuilder var node = SKNode()
-func anyMethod() {
-    // プロパティに $ をつけることで Builer ラッパのインスタンスにアクセスできます
-    self.$node
-        .add(child: SKSpriteNode(color: .white, size: CGSize(width: 32, height: 32)))
-        .add(child: SKLabelNode(text: "Rect"), build: { builder in
-            builder
-                .position(x: -32, y: -32)
-        })
-}
+すでに作成されたノードインスタンスを, 決められたフローに従って編集します.
+
+```swift
+// 編集フローの作成
+
+let processor = Processor<SKNode>()
+    .position(CGPoint(x: 32, y: 32)) // 座標をセットします
+    .alpha(0.5)                      // alpha 値をセットします
 ```
+
+```swift
+// ノードをインスタンス化し, 編集します
+
+let node = SKNode()
+
+processor.process(node: node)
+
+print(node.position) // (32.0, 32.0)
+print(node.alpha)    // 0.5
+
+```
+
 ## Builder で編集可能な SKNode 一覧
 - SKNode
 - SKSpriteNode
