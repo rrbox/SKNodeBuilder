@@ -120,7 +120,8 @@ public enum StandardModifiers {
         
         public func mod(node: Node) {
 //            ここで signal SIGABRT エラーが出た場合, 設定したノードのメモリが解放されている可能性があります.
-            node.addChild(self.body.process(node: self.childNode))
+            self.body.process(node: self.childNode)
+            node.addChild(self.childNode)
         }
         
     }
