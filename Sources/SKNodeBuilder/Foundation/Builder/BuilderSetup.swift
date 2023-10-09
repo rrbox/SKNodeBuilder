@@ -20,10 +20,10 @@ public extension Builder {
         self.processor = Blank<Node>(modData: .init())
         self.generator = Blank<Node>(modData: .init())
     }
+    
 }
 
 public extension Builder where Generator == Blank<T.Node> {
-    
     func setGenerator<U: GeneratorProtocol>(_ generator: U) -> Builder<U, T> {
         .init(generator, processor: self.processor)
     }
@@ -31,7 +31,6 @@ public extension Builder where Generator == Blank<T.Node> {
 }
 
 public extension Builder where T == Blank<Generator.Node> {
-    
     func setProcessor<U: ProcessorProtocol>(_ processor: U) -> Builder<Generator, U> {
         .init(self.generator, processor: processor)
     }

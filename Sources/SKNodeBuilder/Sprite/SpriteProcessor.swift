@@ -11,9 +11,7 @@ public typealias SpriteProcessor<Node: SKSpriteNode> = Processor<Node>
 
 /// Name space of SKSpriteNode builder's modifiers.
 public enum SpriteModifiers {
-    
     public struct Texture<Node: SKSpriteNode>: Modifier {
-        
         var body: SKTexture
         
         public func mod(node: Node) {
@@ -23,7 +21,6 @@ public enum SpriteModifiers {
     }
     
     public struct Size<Node: SKSpriteNode>: Modifier {
-        
         var body: CGSize
         
         public func mod(node: Node) {
@@ -33,7 +30,6 @@ public enum SpriteModifiers {
     }
     
     public struct AnchorPoint<Node: SKSpriteNode>: Modifier {
-        
         var body: CGPoint
         
         public func mod(node: Node) {
@@ -43,7 +39,6 @@ public enum SpriteModifiers {
     }
     
     public struct CenterRect<Node: SKSpriteNode>: Modifier {
-        
         var body: CGRect
         
         public func mod(node: Node) {
@@ -53,7 +48,6 @@ public enum SpriteModifiers {
     }
     
     public struct Color<Node: SKSpriteNode>: Modifier {
-        
         var body: SKColor
         
         public func mod(node: Node) {
@@ -63,7 +57,6 @@ public enum SpriteModifiers {
     }
     
     public struct ColorBlendFactor<Node: SKSpriteNode>: Modifier {
-        
         var body: CGFloat
         
         public func mod(node: Node) {
@@ -73,7 +66,6 @@ public enum SpriteModifiers {
     }
 
     public struct BlendMode<Node: SKSpriteNode>: Modifier {
-        
         var body: SKBlendMode
         
         public func mod(node: Node) {
@@ -83,7 +75,6 @@ public enum SpriteModifiers {
     }
 
     public struct LightingBitMask<Node: SKSpriteNode>: Modifier {
-        
         var body: UInt32
         
         public func mod(node: Node) {
@@ -93,7 +84,6 @@ public enum SpriteModifiers {
     }
 
     public struct ShadowedBitMask<Node: SKSpriteNode>: Modifier {
-        
         var body: UInt32
         
         public func mod(node: Node) {
@@ -103,7 +93,6 @@ public enum SpriteModifiers {
     }
     
     public struct ShadowCastBitMask<Node: SKSpriteNode>: Modifier {
-        
         var body: UInt32
         
         public func mod(node: Node) {
@@ -113,7 +102,6 @@ public enum SpriteModifiers {
     }
 
     public struct NormalTexture<Node: SKSpriteNode>: Modifier {
-        
         var body: SKTexture?
         
         public func mod(node: Node) {
@@ -123,7 +111,6 @@ public enum SpriteModifiers {
     }
 
     public struct Shader<Node: SKSpriteNode>: Modifier {
-        
         var body: SKShader?
         
         public func mod(node: Node) {
@@ -133,7 +120,6 @@ public enum SpriteModifiers {
     }
     
     public struct SetValue<Node: SKSpriteNode>: Modifier {
-        
         var value: SKAttributeValue
         var key: String
         
@@ -146,7 +132,6 @@ public enum SpriteModifiers {
 }
 
 public extension ProcessorProtocol where Node: SKSpriteNode {
-    
     func texture(_ value: SKTexture) -> Next<SpriteModifiers.Texture<Node>> {
         self.modifier(mod: SpriteModifiers.Texture(body: value))
     }

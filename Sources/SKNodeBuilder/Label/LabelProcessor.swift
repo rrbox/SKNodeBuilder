@@ -11,9 +11,7 @@ public typealias LabelProcessor<Node: SKLabelNode> = Processor<Node>
 
 /// Name space of SKLabelNode builder's modifiers.
 public enum LabelModifiers {
-    
     public struct Text<Node: SKLabelNode>: Modifier {
-        
         var body: String?
         
         public func mod(node: Node) {
@@ -23,7 +21,6 @@ public enum LabelModifiers {
     }
 
     public struct AttributedText<Node: SKLabelNode>: Modifier {
-        
         var body: NSAttributedString
         
         public func mod(node: Node) {
@@ -33,7 +30,6 @@ public enum LabelModifiers {
     }
 
     public struct FontColor<Node: SKLabelNode>: Modifier {
-        
         var body: SKColor?
         
         public func mod(node: Node) {
@@ -43,7 +39,6 @@ public enum LabelModifiers {
     }
 
     public struct FontName<Node: SKLabelNode>: Modifier {
-        
         var body: String?
         
         public func mod(node: Node) {
@@ -53,7 +48,6 @@ public enum LabelModifiers {
     }
 
     public struct FontSize<Node: SKLabelNode>: Modifier {
-        
         var body: CGFloat
         
         public func mod(node: Node) {
@@ -63,7 +57,6 @@ public enum LabelModifiers {
     }
 
     public struct VerticalAlignment<Node: SKLabelNode>: Modifier {
-        
         var body: SKLabelVerticalAlignmentMode
         
         public func mod(node: Node) {
@@ -73,7 +66,6 @@ public enum LabelModifiers {
     }
 
     public struct HorizontalAlignment<Node: SKLabelNode>: Modifier {
-        
         var body: SKLabelHorizontalAlignmentMode
         
         public func mod(node: Node) {
@@ -83,7 +75,6 @@ public enum LabelModifiers {
     }
 
     public struct PreferredMaxLayoutWidth<Node: SKLabelNode>: Modifier {
-        
         var body: CGFloat
         
         public func mod(node: Node) {
@@ -93,7 +84,6 @@ public enum LabelModifiers {
     }
 
     public struct LineBreakMode<Node: SKLabelNode>: Modifier {
-        
         var body: NSLineBreakMode
         
         public func mod(node: Node) {
@@ -103,7 +93,6 @@ public enum LabelModifiers {
     }
 
     public struct NumberOfLines<Node: SKLabelNode>: Modifier {
-        
         var body: Int
         
         public func mod(node: Node) {
@@ -113,7 +102,6 @@ public enum LabelModifiers {
     }
 
     public struct Color<Node: SKLabelNode>: Modifier {
-        
         var body: SKColor
         
         public func mod(node: Node) {
@@ -123,7 +111,6 @@ public enum LabelModifiers {
     }
 
     public struct ColorBlendFactor<Node: SKLabelNode>: Modifier {
-        
         var body: CGFloat
         
         public func mod(node: Node) {
@@ -133,7 +120,6 @@ public enum LabelModifiers {
     }
 
     public struct BlendMode<Node: SKLabelNode>: Modifier {
-        
         var body: SKBlendMode
         
         public func mod(node: Node) {
@@ -145,7 +131,6 @@ public enum LabelModifiers {
 }
 
 public extension ProcessorProtocol where Node: SKLabelNode {
-    
     func text(_ value: String?) -> Next<LabelModifiers.Text<Node>> {
         self.modifier(mod: LabelModifiers.Text(body: value))
     }
