@@ -24,6 +24,7 @@ public protocol Modifier {
 public protocol ProcessorProtocol {
     
     associatedtype Mod: Modifier
+    typealias Node = Mod.Node
     var modData: Mod { get set }
     func mod(node: Mod.Node)
     
@@ -32,7 +33,7 @@ public protocol ProcessorProtocol {
 public extension ProcessorProtocol {
     
     typealias Next<T: Modifier> = Link<Self, T> where T.Node == Self.Mod.Node
-    typealias Node = Self.Mod.Node
+//    typealias Node = Self.Mod.Node
     
     /// ビルダーで定義されたプロセスを任意のノードに対して実行します.
     func process(node: Self.Mod.Node) {
