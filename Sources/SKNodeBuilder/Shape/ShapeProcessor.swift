@@ -11,9 +11,7 @@ public typealias ShapeProcessor<Node: SKShapeNode> = Processor<Node>
 
 /// Name space of SKShapeNode builder's modifiers.
 public enum ShapeModifiers {
-    
     public struct Path<Node: SKShapeNode>: Modifier {
-        
         var body: CGPath?
         
         public func mod(node: Node) {
@@ -23,7 +21,6 @@ public enum ShapeModifiers {
     }
     
     public struct FillColor<Node: SKShapeNode>: Modifier {
-        
         var body: SKColor
         
         public func mod(node: Node) {
@@ -33,7 +30,6 @@ public enum ShapeModifiers {
     }
     
     public struct FillTexture<Node: SKShapeNode>: Modifier {
-        
         var body: SKTexture?
         
         public func mod(node: Node) {
@@ -43,7 +39,6 @@ public enum ShapeModifiers {
     }
 
     public struct LineWidth<Node: SKShapeNode>: Modifier {
-        
         var body: CGFloat
         
         public func mod(node: Node) {
@@ -53,7 +48,6 @@ public enum ShapeModifiers {
     }
     
     public struct StrokeColor<Node: SKShapeNode>: Modifier {
-        
         var body: SKColor
         
         public func mod(node: Node) {
@@ -63,7 +57,6 @@ public enum ShapeModifiers {
     }
 
     public struct StrokeTexture<Node: SKShapeNode>: Modifier {
-        
         var body: SKTexture?
         
         public func mod(node: Node) {
@@ -73,7 +66,6 @@ public enum ShapeModifiers {
     }
 
     public struct GlowWidth<Node: SKShapeNode>: Modifier {
-        
         var body: CGFloat
         
         public func mod(node: Node) {
@@ -83,7 +75,6 @@ public enum ShapeModifiers {
     }
 
     public struct LineCap<Node: SKShapeNode>: Modifier {
-        
         var body: CGLineCap
         
         public func mod(node: Node) {
@@ -93,7 +84,6 @@ public enum ShapeModifiers {
     }
 
     public struct LineJoin<Node: SKShapeNode>: Modifier {
-        
         var body: CGLineJoin
         
         public func mod(node: Node) {
@@ -103,7 +93,6 @@ public enum ShapeModifiers {
     }
 
     public struct MiterLimit<Node: SKShapeNode>: Modifier {
-        
         var body: CGFloat
         
         public func mod(node: Node) {
@@ -113,7 +102,6 @@ public enum ShapeModifiers {
     }
     
     public struct IsAntialiased<Node: SKShapeNode>: Modifier {
-        
         var body: Bool
         
         public func mod(node: Node) {
@@ -123,7 +111,6 @@ public enum ShapeModifiers {
     }
 
     public struct BlendMode<Node: SKShapeNode>: Modifier {
-        
         var body: SKBlendMode
         
         public func mod(node: Node) {
@@ -133,7 +120,6 @@ public enum ShapeModifiers {
     }
     
     public struct StrokeShader<Node: SKShapeNode>: Modifier {
-        
         var body: SKShader?
         
         public func mod(node: Node) {
@@ -143,7 +129,6 @@ public enum ShapeModifiers {
     }
 
     public struct FillShader<Node: SKShapeNode>: Modifier {
-        
         var body: SKShader?
         
         public func mod(node: Node) {
@@ -153,7 +138,6 @@ public enum ShapeModifiers {
     }
     
     public struct AttributeValues<Node: SKShapeNode>: Modifier {
-        
         var body: [String: SKAttributeValue]
         
         public func mod(node: Node) {
@@ -165,7 +149,6 @@ public enum ShapeModifiers {
 }
 
 public extension ProcessorProtocol where Node: SKShapeNode {
-    
     func path(_ value: CGPath?) -> Next<ShapeModifiers.Path<Node>> {
         self.modifier(mod: ShapeModifiers.Path(body: value))
     }
