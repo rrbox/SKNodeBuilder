@@ -9,10 +9,8 @@ import SpriteKit
 
 /// Name space of all SKNode subclass builder's modifiers.
 public enum StandardModifiers {
-    
     /// 座標変更のためのモディファイアです.
     public struct Position<Node: SKNode>: Modifier {
-        
         public var body: CGPoint
         
         public func mod(node: Node) {
@@ -20,10 +18,9 @@ public enum StandardModifiers {
         }
         
     }
-
+    
     /// x, y スケールを変更するためのモディファイアです.
     public struct Scale<Node: SKNode>: Modifier {
-        
         public var body: CGFloat
         
         public func mod(node: Node) {
@@ -31,10 +28,9 @@ public enum StandardModifiers {
         }
         
     }
-
+    
     /// x スケールを変更するためのモディファイアです.
     public struct XScale<Node: SKNode>: Modifier {
-        
         public var body: CGFloat
         
         public func mod(node: Node) {
@@ -42,10 +38,9 @@ public enum StandardModifiers {
         }
         
     }
-
+    
     /// y スケールを変更するためのモディファイアです.
     public struct YScale<Node: SKNode>: Modifier {
-        
         public var body: CGFloat
         
         public func mod(node: Node) {
@@ -53,10 +48,9 @@ public enum StandardModifiers {
         }
         
     }
-
+    
     /// zPosition を変更するためのモディファイアです.
     public struct ZPosition<Node: SKNode>: Modifier {
-        
         public var body: CGFloat
         
         public func mod(node: Node) {
@@ -64,10 +58,9 @@ public enum StandardModifiers {
         }
         
     }
-
+    
     /// zRotation を変更するためのモディファイアです.
     public struct ZRotation<Node: SKNode>: Modifier {
-        
         public var body: CGFloat
         
         public func mod(node: Node) {
@@ -75,10 +68,9 @@ public enum StandardModifiers {
         }
         
     }
-
+    
     /// alpha を変更するためのモディファイアです.
     public struct Alpha<Node: SKNode>: Modifier {
-        
         var body: CGFloat
         
         public func mod(node: Node) {
@@ -86,10 +78,9 @@ public enum StandardModifiers {
         }
         
     }
-
+    
     /// name を変更するためのモディファイアです.
     public struct Name<Node: SKNode>: Modifier {
-        
         var body: String?
         
         public func mod(node: Node) {
@@ -101,25 +92,23 @@ public enum StandardModifiers {
     /// ``doc:SKNodeBuilder/ProcessorProtocol/addChild(builder:)`` を行うためのモディフィアです.
     /// ビルダーオブジェクトから `node()` メソッドにより生成さたノードを子ノードとして追加します.
     public struct AddChildBuilder<Generator: GeneratorProtocol, T: ProcessorProtocol, Node: SKNode> where Generator.Node == T.Mod.Node {
-        
         var body: Builder<Generator, T>
         
-//        public func mod(node: Node) {
-//            node.addChild(self.body.node())
-//        }
-//
+        //        public func mod(node: Node) {
+        //            node.addChild(self.body.node())
+        //        }
+        //
     }
     
     ///  ``doc:SKNodeBuilder/ProcessorProtocol/addChild(_:withNode:)``を行うためのモディフィアです.
     ///
     /// ビルダーオブジェクトから `process(node:)` メソッドで編集されたノードを子ノードとして追加します.
     public struct AddChildWithNode<T: ProcessorProtocol, Node: SKNode>: Modifier {
-        
         var body: T
         unowned let childNode: T.Node
         
         public func mod(node: Node) {
-//            ここで signal SIGABRT エラーが出た場合, 設定したノードのメモリが解放されている可能性があります.
+            //            ここで signal SIGABRT エラーが出た場合, 設定したノードのメモリが解放されている可能性があります.
             self.body.process(node: self.childNode)
             node.addChild(self.childNode)
         }
@@ -130,27 +119,25 @@ public enum StandardModifiers {
     ///
     /// ノードをそのまま子ノードとして追加します.
     public struct AddChild<T: SKNode, Node: SKNode>: Modifier {
-        
         unowned let body: T
         
         public func mod(node: Node) {
-//            ここで signal SIGABRT エラーが出た場合, 設定したノードのメモリが解放されている可能性があります.
+            //            ここで signal SIGABRT エラーが出た場合, 設定したノードのメモリが解放されている可能性があります.
             node.addChild(self.body)
         }
         
     }
-
-
+    
 }
 
 extension StandardModifiers.AddChildBuilder: Modifier where Generator: DefaultNodeGenerator {
     public func mod(node: Node) {
         node.addChild(self.body.node())
     }
+    
 }
 
 public extension ProcessorProtocol {
-    
     /// 座標を変更します.
     func position(_ value: CGPoint) -> Next<StandardModifiers.Position<Node>> {
         self.modifier(mod: StandardModifiers.Position(body: value))
