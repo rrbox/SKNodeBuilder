@@ -8,7 +8,6 @@
 import SpriteKit
 
 public enum LabelGenerators {
-    
     public struct FontNamed<Node: SKLabelNode>: DefaultNodeGenerator {
         let fontName: String?
         public func node() -> Node {
@@ -33,7 +32,6 @@ public enum LabelGenerators {
 }
 
 public extension Generators where Node: SKLabelNode {
-    
     static func make(fontNamed fontName: String?) -> LabelGenerators.FontNamed<Node> {
         .init(fontName: fontName)
     }

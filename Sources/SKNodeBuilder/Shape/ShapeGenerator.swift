@@ -8,93 +8,113 @@
 import SpriteKit
 
 public enum ShapeGenerators {
-    
     public struct Path<Node: SKShapeNode>: DefaultNodeGenerator {
         let path: CGPath
+        
         public func node() -> Node {
             Node(path: self.path)
         }
+        
     }
     
     public struct PathCenterd<Node: SKShapeNode>: DefaultNodeGenerator {
         let path: CGPath
         let centered: Bool
+        
         public func node() -> Node {
             Node(path: self.path, centered: self.centered)
         }
+        
     }
     
     public struct Rect<Node: SKShapeNode>: DefaultNodeGenerator {
         let rect: CGRect
+        
         public func node() -> Node {
             Node(rect: self.rect)
         }
+        
     }
     
     public struct RectOf<Node: SKShapeNode>: DefaultNodeGenerator {
         let size: CGSize
+        
         public func node() -> Node {
             Node(rectOf: self.size)
         }
+        
     }
 
     public struct RectCornerRadius<Node: SKShapeNode>: DefaultNodeGenerator {
         let rect: CGRect
         let cornerRadius: CGFloat
+        
         public func node() -> Node {
             Node(rect: self.rect, cornerRadius: self.cornerRadius)
         }
+        
     }
     
     public struct RectOfCornerRadius<Node: SKShapeNode>: DefaultNodeGenerator {
         let size: CGSize
         let cornerRadius: CGFloat
+        
         public func node() -> Node {
             Node(rectOf: self.size, cornerRadius: self.cornerRadius)
         }
+        
     }
     
     public struct CircleOfRadius<Node: SKShapeNode>: DefaultNodeGenerator {
         let radius: CGFloat
+        
         public func node() -> Node {
             Node(circleOfRadius: self.radius)
         }
+        
     }
     
     public struct EllipseOf<Node: SKShapeNode>: DefaultNodeGenerator {
         let size: CGSize
+        
         public func node() -> Node {
             Node(ellipseOf: self.size)
         }
+        
     }
     
     public struct EllipseIn<Node: SKShapeNode>: DefaultNodeGenerator {
         let rect: CGRect
+        
         public func node() -> Node {
             Node(ellipseIn: self.rect)
         }
+        
     }
     
     public struct PointsCount<Node: SKShapeNode>:DefaultNodeGenerator {
         let points: UnsafeMutablePointer<CGPoint>
         let numPoints: Int
+        
         public func node() -> Node {
             Node(points: self.points, count: self.numPoints)
         }
+        
     }
     
     public struct SplinePointsCount<Node: SKShapeNode>: DefaultNodeGenerator {
         let points: UnsafeMutablePointer<CGPoint>
         let numPoints: Int
+        
         public func node() -> Node {
             Node(splinePoints: self.points, count: self.numPoints)
         }
+        
     }
     
 }
 
 public extension Generators where Node: SKShapeNode {
-    
     static func make(path: CGPath) -> ShapeGenerators.Path<Node> {
         .init(path: path)
     }

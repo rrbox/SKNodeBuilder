@@ -9,7 +9,6 @@ import SpriteKit
 
 /// ビルダーの起点となる構造体です.
 public struct Builder<Generator: GeneratorProtocol, T: ProcessorProtocol> where Generator.Node == T.Mod.Node {
-    
     let generator: Generator
     let processor: T
     
